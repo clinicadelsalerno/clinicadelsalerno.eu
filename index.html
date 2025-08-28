@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Clinica del Salerno – Haloterapia Controllata con dispositivo medico certificato. Respira, dormi e vivi meglio a Salerno.">
+    <meta name="author" content="Clinica del Salerno">
+
+    <title>Clinica del Salerno – Haloterapia Controllata</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="css/templatemo-medic-care.css" rel="stylesheet">
+
+    <!-- Stili minimi per banner cookie e FAQ inline mobile (fallback) -->
+    <style>
+      :root{ --focus-ring:0 0 0 0.25rem rgba(61,181,249,.5) }
+      a:focus-visible, button:focus-visible{ outline:none; box-shadow:var(--focus-ring) }
+      /* Banner cookie */
+      #cookie-banner{ position:fixed; z-index:1055; left:0; right:0; bottom:0; background:#fff; border-top:1px solid #eaeaea; box-shadow:0 -4px 24px rgba(0,0,0,.08); padding:1rem; display:none }
+      #cookie-banner .btn{ margin-right:.5rem }
+      @media (max-width:575.98px){ #cookie-banner .btn{ width:100%; margin:.25rem 0 } }
+      /* FAQ inline answer container (inserito da JS su mobile) */
+
+/* === Cookie banner: colori e dimensioni aggiornati === */
+#cookie-banner {
+  padding: .5rem .75rem !important;
+  font-size: .9rem !important;
+}
+#cookie-banner .btn {
+  padding: .35rem .7rem !important;
+  font-size: .875rem !important;
+}
+/* Pulsanti conforme FAQ con blu scuro della Clinica del Salerno */
+#cookie-accept.btn {
+  background-color: #0080C8 !important;
+  border-color: #0080C8 !important;
+  color: #fff !important;
+}
+#cookie-accept.btn:hover,
+#cookie-accept.btn:focus {
+  background-color: #006eac !important; /* leggermente più scuro su hover */
+  border-color: #006eac !important;
+  box-shadow: 0 0 0 0.25rem #3DB5F980 !important;
+  color: #fff !important;
+}
+#cookie-decline.btn {
+  background-color: #ffffff !important;
+  color: #0080C8 !important;
+  border-color: #0080C8 !important;
+}
+#cookie-decline.btn:hover,
+#cookie-decline.btn:focus {
+  background-color: #0080C8 !important;
+  color: #ffffff !important;
+  border-color: #0080C8 !important;
+  box-shadow: 0 0 0 0.25rem #3DB5F980 !important;
+}/* Preferenze = come Rifiuta (outline blu scuro) */
+#cookie-preferences.btn {
+  background-color: #fff !important;
+  color: #0080C8 !important;
+  border-color: #0080C8 !important;
+}
+#cookie-preferences.btn:hover,
+#cookie-preferences.btn:focus {
+  background-color: #0080C8 !important;
+  color: #fff !important;
+  border-color: #0080C8 !important;
+  box-shadow: 0 0 0 0.25rem #3DB5F980 !important;
+}
+/* === Pulsanti dei MODAL: blu scuro della Clinica === */
+.modal .btn-primary{
+  background-color:#0080C8 !important;
+  border-color:#0080C8 !important;
+  color:#fff !important;
+}
+.modal .btn-primary:hover,
+.modal .btn-primary:focus{
+  background-color:#006eac !important;
+  border-color:#006eac !important;
+  box-shadow:0 0 0 0.25rem #3DB5F980 !important;
+}
+
+.modal .btn-outline-primary{
+  background-color:#fff !important;
+  color:#0080C8 !important;
+  border-color:#0080C8 !important;
+}
+.modal .btn-outline-primary:hover,
+.modal .btn-outline-primary:focus{
+  background-color:#0080C8 !important;
+  color:#fff !important;
+  border-color:#0080C8 !important;
+  box-shadow:0 0 0 0.25rem #3DB5F980 !important;
+}
+
+    </style>
+  </head>
+  <body id="top">
+    <main>
+      <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+        <div class="container">
+          <a class="navbar-brand mx-auto d-lg-none" href="#timeline">
+            Clinica del Salerno
+            <strong class="d-block">Professionisti in Haloterapia Controllata</strong>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item"><a class="nav-link" href="#Haloterapia-Controllata">Haloterapia&nbsp;Controllata</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Testimonianze">Testimonianze</a></li>
+              <a class="navbar-brand d-none d-lg-block" href="#timeline">Clinica del Salerno<strong class="d-block">Professionisti in Haloterapia Controllata</strong></a>
+              <li class="nav-item"><a class="nav-link" href="#FAQ-Interattive">Domande</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Scrivici">Scrivici</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Contatti">Contatti</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <section class="hero" id="hero">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div id="myCarousel" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="images/slider/prima-immagine.jpg" class="img-fluid" alt="donna mediterranea respira molto meglio dopo aver effettuato il trattamento di Haloterapia Controllata">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/slider/seconda-immagine.jpg" class="img-fluid" alt="una coppia di mezza età vive una vita più felice dopo aver effettuato un trattamento di Haloterapia Controllata">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/slider/terza-immagine.jpg" class="img-fluid" alt="un neonato dorme beatamente e senza disturbi dopo aver effettuato un trattamento di Haloterapia Controllata">
+                  </div>
+                </div>
+              </div>
+
+              <div class="heroText d-flex flex-column justify-content-center">
+                <h1 class="mt-auto mb-2">
+                  <div class="animated-info">
+                    <span class="animated-item">Respira</span>
+                    <span class="animated-item">Dormi</span>
+                    <span class="animated-item">Vivi</span>
+                  </div>
+                  Meglio
+                </h1>
+                <p class="mb-4">L'Haloterapia Controllata è l'unica terapia naturale, con solide basi scientifiche, in grado di garantirti la sicurezza e l'efficacia che cerchi.</p>
+                <div class="heroLinks d-flex flex-wrap align-items-center">
+                  <a class="custom-link me-4" href="#Haloterapia-Controllata" data-hover="SCOPRI">SCOPRI</a>
+                  <p class="contact-phone mb-0"><i class="bi-phone"></i> <a href="tel:+393784180878" class="text-decoration-none">+39 378 418 0878</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding" id="Haloterapia-Controllata">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <h2 class="mb-lg-3 mb-3">Se non è Controllata, non è Haloterapia</h2>
+              <p>Affidati alla sicurezza offerta dall'unico dispositivo medico certificato dal Ministero della Salute Italiano in grado di 
+                <strong>micronizzare</strong> e 
+                <strong>ionizzare</strong> il sale puro durante la tua seduta di Haloterapia, 
+                <strong>controllando</strong> costantemente la concentrazione salina all'interno della stanza.
+              </p>
+              <p>Scopri i benefici dell'Haloterapia Controllata per le tue vie respiratorie e per la tua pelle.
+                 Vieni a trovarci alla Clinica del Salerno.</p>
+            </div>
+            <div class="col-lg-4 col-md-5 col-12 mx-auto">
+              <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                <img src="images/logo-clinica/logo-clinica.png" alt="logo-clinica" class="img-fluid rounded-circle" style="max-width: 333px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-6 ps-0">
+              <img src="images/gallery/immagine-sinistra.jpg" class="img-fluid galleryImage" alt="haloterapia controllata mamma figlia">
+            </div>
+            <div class="col-lg-6 col-6 pe-0">
+              <img src="images/gallery/immagine-destra.jpg" class="img-fluid galleryImage" alt="stanza del sale">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE COMPLETA -->
+      <section class="section-padding pb-0" id="timeline">
+        <div class="container">
+          <div class="row">
+            <h2 class="text-center mb-lg-5 mb-4">La nostra linea temporale</h2>
+            
+            <div class="timeline">
+              <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                  <h3 class=" text-light">La scoperta scientifica</h3>
+                  <p>Il medico polacco Feliks Boczkowski scopre i benefici dell’aria salmastra secca per le vie respiratorie, studiando i minatori delle miniere di sale di Wielcza, i quali, nonostante le difficili condizioni lavorative, non soffrivano di patologie dell’apparato respiratorio. Un'antica forma di trattamento naturale, nota con il nome di speleoterapia, si sviluppa nell'Est Europa</p>
+                </div>
+                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                  <i class="bi-lightbulb timeline-icon"></i>
+                </div>
+                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                  <time>1843</time>
+                </div>
+              </div>
+
+              <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                  <h3 class=" text-light">Studi medici pioneristici</h3>
+                  <p> Vengono svolte  le prime <a href="https://pubmed.ncbi.nlm.nih.gov/10161255/" target="_blank"><strong>RICERCHE CLINICHE</strong></a> in Europa che confermano gli importanti effetti positivi del sale micronizzato sulle malattie respiratorie e cutanee. Nasce così l'Haloterapia Controllata, svolta in un ambiente confinato.</p>
+                </div>
+                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                  <i class="bi-journal-text timeline-icon"></i>
+                </div>
+                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                  <time>Anni 90'</time>
+                </div>
+              </div>
+
+              <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                  <h3 class=" text-light">I primi dispositivi medici</h3>
+                  <p>Viene lanciato sul mercato, da un'azienda leader nel settore medicale, il primo micronizzatore salino in grado di replicare gli effetti curativi dell'Haloterapia Controllata, grazie ad un dispositvo integrato che misura costantemente la concentrazione di sale nella stanza dove viene istallato.  </p>
+                </div>
+                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                  <i class="bi-gear timeline-icon"></i>
+                </div>
+                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                  <time>1991</time>
+                </div>
+              </div>
+
+              <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                  <h3 class=" text-light">Terapia medica riconosciuta</h3>
+                  <p class="mb-0 pb-0">Dopo 15 anni di studi scientifici svolti con quel pioneristico dispositivo, e con le sue successive versioni aggiorante sempre più perfezionate, sono stati pubblicati centinaia di studi medici, grazie ai quali l'Haloterapia Controllata è diventata uno standard di cura in diverse nazioni.</p>
+                  <p>L'azienda produce così il suo primo halogeneratore ad uso medicale al mondo, classe II A, marcato CE.</p>
+                </div>
+                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                  <i class="bi-award timeline-icon"></i>
+                </div>
+                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                  <time>2006</time>
+                </div>
+              </div>
+
+              <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                  <h3 class=" text-light">Apre a Salerno il primo centro di Haloterapia Controllata</h3>
+                  <p>Dopo ulteriori anni di miglioramento e consolidamento nel mercato, con oltre 5000 istallazioni nel Mondo, la Clinica del Salerno decide di portare ai pazienti della provincia campana la sicurezza ed efficacia proprio della più recente versione di quello stesso dispositivo medico, riferimento mondiale per l'Haloterapia Controllata.</p>
+                </div>
+                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                  <i class="bi-gem timeline-icon"></i>
+                </div>
+                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                  <time>2024</time>
+                </div>
+              </div>
+
+              <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                  <h3 class=" text-light">La nostra missione</h3>
+                  <p>Secondo la visione della Clinica del Salerno, la <strong>salute</strong> di ciascuno di noi non coincide con l'eliminazione il prima possibile dei sintomi per massimizzare la produttività lavorativa o scolastica, come fossimo macchine, ma, in accordo con la definizione dell'OMS, <strong>uno stato di equilibrio e completo benessere, sia fisico che mentale</strong>. Assieme all'Associazione Mondiale di Haloterapia, di cui facciamo parte, diversi otorinolaringoiatri, pneumologi e dermatologi che condividono questo approccio, ambiamo a trasmettere una cultura della <strong>cura</strong> dell'apparato repiratorio e della cute, <strong>scientificamente comprovata</strong>, attenta al paziente, lenta (<strong>slow-health</strong>) e <strong>sostenibile</strong>. </p>
+                </div>
+                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                  <i class="bi bi-eye-fill timeline-icon"></i>
+                </div>
+                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                  <time>Uno sguardo sul Futuro...</time>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIANZE COMPLETE -->
+      <section class="section-padding pb-0" id="Testimonianze">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="text-center mb-lg-5 mb-4">I nostri pazienti</h2>
+              <div class="owl-carousel reviews-carousel">
+
+                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                  <div class="reviews-stars">
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                  </div>
+                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Intervento chirurgico evitato</strong></p>
+                  <p class="reviews-text w-100">Mio figlio (12 anni) soffre di ipertrofia dei turbinati, delle tonsille e delle adenoidi. Sono entusiasta dei risultati ottenuti già dopo poche sedute: sta espellendo i muchi, respira molto meglio e il suo stato generale di salute è migliorato.
+                  L'ambiente è gradevole e rilassante. I titolari sono professionali e disponibili.
+                  Consiglio vivamente questa struttura.</p>
+                  <img src="images/reviews/Daniela.jpg" class="img-fluid reviews-image" alt="">
+                  <figcaption class="ms-4"><strong>Daniela</strong><span class="text-muted"> Madre del paziente</span></figcaption>
+                </figure>
+
+                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                  <div class="reviews-stars">
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                  </div>
+                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Riposo e benessere ritrovati</strong></p>
+                  <p class="reviews-text w-100">Con mia moglie abbiamo fatto insieme un ciclo completo di sedute. Dopo solo 3 sedute, abbiamo notato dei notevoli miglioramenti. Addirittura, ad un controllo che abbiamo fatto adesso dall'otorino, è stato riscontrato che l'edema della mucosa nasale si è notevolmente ridotto, senza aver fatto alcuna terapia medica! Dormiamo meglio e la cefalea di mia moglie sembra migliorata, come anche il mio riposo notturno è più soddisfacente. Stiamo raccomandando questo trattamento a familiari ed amici! Ritorneremo senz'altro!</p>
+                  <img src="images/reviews/Pasquale Arcaro.jpg" class="img-fluid reviews-image" alt="">
+                  <figcaption class="ms-4"><strong>Pasquale Arcaro</strong><span class="text-muted"> Coppia di pazienti</span></figcaption>
+                </figure>
+
+                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                  <div class="reviews-stars">
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                  </div>
+                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Risultati concreti comprovati</strong></p>
+                  <p class="reviews-text w-100">Il mio Otorinolaringoiatra mi ha prescritto un ciclo di sedute presso questa clinica. Inizialmente ero titubante, ma ho riscontrato che funziona, anche meglio dei farmaci. Inoltre il centro è nuovo e pulito ed il personale è cordiale.</p>
+                  <img src="images/reviews/Vin Alamut.jpg" class="img-fluid reviews-image" alt="">
+                  <figcaption class="ms-4"><strong>Vin Alamut</strong><span class="text-muted"> Paziente</span></figcaption>
+                </figure>
+
+                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                  <div class="reviews-stars">
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                  </div>
+                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Intervento scampato!</strong></p>
+                  <p class="reviews-text w-100">Struttura molto bella, nuova e pulita. Volevo ringraziare Rosa e Andrea per la loro professionalità, umanità e attenzione. Mi sono fidata dell'otorino, e grazie alla terapia abbiamo risolto il problema delle adenoidi. Abbiamo scampato l’intervento alla piccola! Grazie di cuore ❤️</p>
+                  <img src="images/reviews/Eli Policastro.jpg" class="img-fluid reviews-image" alt="">
+                  <figcaption class="ms-4"><strong>Eli Policastro</strong><span class="text-muted"> Madre della paziente</span></figcaption>
+                </figure>
+
+                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                  <div class="reviews-stars">
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                    <i class="bi-star-fill"></i>
+                  </div>
+                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Miglioramenti immediati</strong></p>
+                  <p class="reviews-text w-100">Offrono un servizio eccellente si notano miglioramenti nelle vie respiratorie dopo poche sedute io credo che tutti dovremmo considerare questo centro per il bene di tutti la famiglia specie nei bambini grazie per il vostro supporto.</p>
+                  <img src="images/reviews/Ciro.jpg" class="img-fluid reviews-image" alt="">
+                  <figcaption class="ms-4"><strong>Ciro</strong><span class="text-muted"> Padre delle pazienti</span></figcaption>
+                </figure>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section-padding pb-0" id="FAQ-Interattive">
+        <div class="container">
+          <h2 class="text-center mb-lg-5 mb-4">Domande</h2>
+          <div class="row">
+            <!-- Colonna 1 -->
+            <div class="col-md-4">
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(0)" data-faq="0">Cos'è l'Haloterapia Controllata?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(1)" data-faq="1">Perché deve essere Controllata?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(2)" data-faq="2">Perchè micronizzare il sale al momento?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(3)" data-faq="3">Siete un centro autorizzato?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(4)" data-faq="4">Quanto dura una seduta singola?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(5)" data-faq="5">Quante sedute servono?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(6)" data-faq="6">È adatta ai bambini molto piccoli?</button>
+            </div>
+
+            <!-- Colonna 2: Immagine o risposta (desktop) -->
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+              <div id="faq-answer-box" class="p-3 text-center border rounded shadow-sm w-100">
+                <img id="faq-default-img" src="images/faq/default.png" class="img-fluid" alt="FAQ" style="max-height:300px;">
+                <p id="faq-answer-text" class="d-none mt-3 text-start" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <!-- Colonna 3 -->
+            <div class="col-md-4">
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(7)" data-faq="7">Che sale usate?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(8)" data-faq="8">Perché non usate sale Himalayano?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(9)" data-faq="9">Perché vi pubblicizzate poco?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(10)" data-faq="10">Cosa devo indossare?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(11)" data-faq="11">Ci sono controindicazioni?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(12)" data-faq="12">Quanto costa?</button>
+              <button class="faq-btn btn btn-outline-primary w-100 mb-3" onclick="showAnswer(13)" data-faq="13">Il trattamento si può detrarre?</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SCRIVICI -->
+      <section class="section-padding" id="Scrivici">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-12 mx-auto">
+              <div class="booking-form">
+                <h2 class="text-center mb-lg-3 mb-2">Scrivici</h2>
+                <form role="form" action="#booking" method="post">
+                  <div class="row">
+                    <div class="col-lg-6 col-12">
+                      <input type="text" name="surname" id="surname" class="form-control" placeholder="Nome" required>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                      <input type="text" name="name" id="name" class="form-control" placeholder="Cognome" required>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                      <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" class="form-control" placeholder="Numero di telefono: 3337777777">
+                    </div>
+                    <div class="col-lg-6 col-12">
+                      <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Indirizzo email" required>
+                    </div>
+                    <div class="col-12">
+                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Messaggio"></textarea>
+                    </div>
+                    <div class="col-12 mt-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" id="privacyCheck" required>
+                        <label class="form-check-label" for="privacyCheck">Ho letto l'<a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Informativa Privacy</a> e acconsento al trattamento dei dati per rispondere alla mia richiesta.</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                      <button type="submit" class="form-control" id="submit-button">INVIA</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer section-padding pb-0" id="Contatti">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 me-auto col-12">
+            <h5 class="mb-lg-4 mb-3">Orari di apertura</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex">
+                Da Lunedì a Venerdì                                 
+                <span>14:00 - 20:00 </span>
+              </li>
+              <li class="list-group-item d-flex">
+                Da Lun. a Sab. mattina  
+                <span>Su prenotazione </span>
+              </li>
+              <li class="list-group-item d-flex">
+                Domenica 
+                <span>CHIUSO </span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 my-4 my-lg-0">
+            <h5 class="mb-lg-4 mb-3">Indirizzo</h5>
+            <p><a href="mailto:clinicadelsalerno@gmail.com">clinicadelsalerno@gmail.com</a><p>
+            <p>
+           <a href="https://www.google.com/maps/place/Clinica+del+Salerno/@40.6906366,14.7708123,749m/data=!3m2!1e3!4b1!4m6!3m5!1s0xe3ffceb33286e3b:0x88387d0f16b252bb!8m2!3d40.6906367!4d14.7756778!16s%2Fg%2F11y7cdpdg4?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+    Viale Antonio Gramsci, 58<br>Salerno (SA) 84126<br>Italy
+  </a>
+</p>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 ms-auto">
+            <h5 class="mb-lg-4 mb-3">Socials</h5>
+            <ul class="social-icon">
+              <li><a href="https://m.facebook.com/61566811559559/" class="social-icon-link bi-facebook" aria-label="Facebook"></a></li>
+              <li><a href="https://www.instagram.com/clinicadelsalerno/" class="social-icon-link bi-instagram" aria-label="Instagram"></a></li>
+              <li><a href="https://wa.me/393784180878" class="social-icon-link bi-whatsapp" aria-label="WhatsApp"></a></li>
+            </ul>
+            
+<!-- (fine lista Social) — rimuovo i link dalla colonna Socials -->
+<!-- NUOVO BLOCCO FULL-WIDTH sotto le 3 colonne -->
+</div>
+
+<!-- Riga a tutta larghezza con link legali + copyright -->
+<div class="col-12 mt-5 mb-5">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start small">
+
+    <!-- Sinistra (desktop) / Prima voce (mobile) -->
+    <div class="d-flex flex-column flex-md-row align-items-start mb-2 mb-md-0">
+      <a class="me-md-2" href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Informativa Privacy</a>
+      <span class="d-none d-md-inline me-md-2">•</span>
+
+      <a class="me-md-2" href="#" id="open-cookie-preferences">Preferenze cookie</a>
+      <span class="d-none d-md-inline me-md-2">•</span>
+
+      <a href="#" data-bs-toggle="modal" data-bs-target="#disclaimerModal">Disclaimer</a>
+    </div>
+
+    <!-- Destra (desktop) / Ultima voce (mobile) -->
+    <div>
+      © 2025 Clinica del Salerno. Tutti i diritti riservati
+    </div>
+
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+        </div>
+      </div>
+    </footer>
+
+   <!-- MODAL: Informativa Privacy estesa -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">
+          INFORMATIVA AI SENSI DEGLI ARTT. 13-14 DEL GDPR 2016/679
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <p><em>(Regolamento Generale sulla Protezione dei Dati)</em></p>
+        <p>Gentile Signore/a,<br>
+        ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (“GDPR”), La informiamo che i dati personali da Lei forniti saranno trattati nel rispetto della normativa vigente e secondo i principi di correttezza, liceità, trasparenza e tutela della riservatezza.</p>
+
+        <h6>1. Finalità del trattamento</h6>
+        <ul>
+          <li>Esecuzione di contratti: per fornire e gestire i servizi richiesti.</li>
+          <li>Adempimenti legali: per ottemperare ad obblighi di legge o regolamentari.</li>
+          <li>Marketing e comunicazioni: per inviare comunicazioni su offerte, promozioni e aggiornamenti, previo Suo consenso.</li>
+          <li>Gestione di richieste e reclami: per rispondere a domande, richieste o reclami.</li>
+          <li>Analisi e miglioramento: per migliorare la qualità dei servizi offerti.</li>
+          <li>Sicurezza: per garantire la sicurezza e l’integrità di sistemi e servizi.</li>
+        </ul>
+
+        <h6>2. Durata del trattamento</h6>
+        <p>I dati saranno conservati per il tempo strettamente necessario alle finalità per cui sono raccolti, come indicate nella sezione "1. Finalità del trattamento" e per adempiere a eventuali obblighi di legge.</p>
+
+        <h6>3. Basi giuridiche del trattamento</h6>
+        <ul>
+          <li>Esecuzione di un contratto (<em>art. 6.1.b GDPR</em>)</li>
+          <li>Obbligo legale (<em>art. 6.1.c GDPR</em>)</li>
+          <li>Consenso dell’interessato (<em>art. 6.1.a GDPR</em>) per finalità di marketing diretto o per specifiche dichiarazioni.</li>
+          <li>Legittimo interesse del titolare (<em>art. 6.1.f GDPR</em>) compatibile con i diritti e le libertà fondamentali dell’interessato.</li>
+        </ul>
+
+        <h6>4. Modalità del trattamento</h6>
+        <p>I dati saranno trattati con strumenti manuali, informatici e telematici, con logiche strettamente correlate alle finalità indicate, nel rispetto delle misure di sicurezza previste dalla normativa (<em>art. 32 GDPR</em>).<br>
+        Non è possibile garantire la sicurezza assoluta per dati trattati o archiviati online tramite piattaforme di terzi (es. Google, Clarity, etc.).</p>
+
+        <h6>5. Conferimento dei dati</h6>
+        <p>Il conferimento dei dati non è obbligatorio, ma è necessario per l’erogazione del servizio richiesto. Il mancato conferimento potrà impedire l’esecuzione delle prestazioni e l’adempimento del contratto.</p>
+
+        <h6>6. Comunicazione dei dati</h6>
+        <p>In base alla natura e tipologia, i dati potranno (ma non necessariamente) essere comunicati a:</p>
+        <ul>
+          <li>Autorità legali e regolatorie, per obblighi di legge o tutela di diritti legali;</li>
+          <li>Responsabili esterni del trattamento contrattualizzati, anche in Paesi terzi aderenti alla normativa UE;</li>
+          <li>Partner commerciali, previo consenso, per attività di co-marketing.</li>
+        </ul>
+
+        <h6>7. Titolare del trattamento</h6>
+        <p>
+          <strong>Clinica del Salerno di Rosa Albanese</strong><br>
+          Sede legale: Viale Antonio Gramsci, 58 – Salerno (SA)<br>
+          Email PEC: <a href="mailto:rosa.albanese@postecert.it">rosa.albanese@postecert.it</a>
+        </p>
+
+        <h6>8. Diritti dell’interessato</h6>
+        <p>Ai sensi degli artt. 15-22 del GDPR, Lei ha diritto di:</p>
+        <ul>
+          <li>ottenere la conferma dell’esistenza di dati personali che La riguardano;</li>
+          <li>ricevere informazioni su finalità, categorie di dati e destinatari;</li>
+          <li>ottenere rettifica o cancellazione dei dati;</li>
+          <li>richiedere la limitazione del trattamento;</li>
+          <li>ottenere la portabilità dei dati;</li>
+          <li>opporsi al trattamento, anche per finalità di marketing diretto;</li>
+          <li>opporsi a processi decisionali automatizzati, inclusa la profilazione;</li>
+          <li>revocare il consenso in qualsiasi momento;</li>
+          <li>proporre reclamo all’Autorità di controllo (Garante per la Protezione dei Dati Personali).</li>
+        </ul>
+
+        <p>Le richieste possono essere inviate a: 
+          <a href="mailto:rosa.albanese@postecert.it">rosa.albanese@postecert.it</a>
+        </p>
+
+        <p class="mt-3"><strong>Il sottoscritto conferma di aver ricevuto l'informativa ai sensi dell'art. 13 del GDPR 2016/679, consultabile interamente al <a href="https://www.garanteprivacy.it/documents/10160/0/Regolamento+UE+2016+679.+Arricchito+con+riferimenti+ai+Considerando+Aggiornato+alle+rettifiche+pubblicate+sulla+Gazzetta+Ufficiale++dell%27Unione+europea+127+del+23+maggio+2018" 
+target="_blank"
+style="text-decoration:underline;">link indicato</a>
+ </strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- COOKIE BANNER (compatto in calce) -->
+<div id="cookie-banner" class="container-fluid bg-light border-top small py-2 px-3 fixed-bottom">
+  <div class="row align-items-center">
+    <div class="col-12 col-md">
+      <p class="mb-2 mb-md-0 small">
+        Usiamo <strong>cookie tecnici</strong> per far funzionare il sito e, solo se lo desideri,
+        <strong>cookie analitici anonimi</strong> per migliorare la navigazione.
+        <a href="/cookie-policy" target="_blank" rel="noopener">Cookie Policy</a>
+      </p>
+    </div>
+    <div class="col-12 col-md-auto text-md-end">
+      <button id="cookie-accept" class="btn btn-sm btn-primary">Accetta</button>
+      <button id="cookie-preferences" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cookiePrefsModal">Preferenze</button>
+      <button id="cookie-decline" class="btn btn-sm btn-outline-secondary">Rifiuta</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE PREFERENCES MODAL -->
+<div class="modal fade" id="cookiePrefsModal" tabindex="-1" aria-labelledby="cookiePrefsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="cookiePrefsLabel">Preferenze cookie</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body small">
+        <p class="mb-1"><strong>Cookie tecnici</strong> (sempre attivi)</p>
+        <p class="text-muted mb-3">Necessari al corretto funzionamento del sito.</p>
+
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="consent-analytics">
+          <label class="form-check-label" for="consent-analytics">
+            Cookie analitici anonimi (Microsoft Clarity)
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Annulla</button>
+        <button type="button" class="btn btn-sm btn-primary" id="save-cookie-prefs">Salva</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Disclaimer -->
+<div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="disclaimerTitle">Disclaimer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+  <p><strong>Avvertenze importanti</strong></p>
+  <p>
+    In Italia l’haloterapia <strong>è attualmente al vaglio per rientrare nelle prestazioni medico sanitarie</strong>.
+    Il Ministero della Salute Italiano ha comunicato che sono in corso approfondimenti sulla sua riconducibilità all’ambito delle procedure sanitarie (<a href="https://www.agenziaentrate.gov.it/portale/documents/20143/276162/Circolare+n.+3E+del+2+marzo+2016.pdf" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate, circ. 3/E, 02.03.2016, §1.1</a>)
+    Le informazioni presenti su questo sito, pertanto, hanno per ora <strong>finalità esclusivamente divulgative</strong>
+    e comunque non costituiscono in alcun modo consulenza medica, né pubblicità sanitaria di prestazioni mediche, né attività assimilabili.
+  </p>
+
+  <ul class="small ps-3">
+    <li>
+      L’haloterapia <strong>non sostituisce</strong> visite, diagnosi o terapie di medici specialisti
+      e <strong>non sostituisce</strong> le alternative farmacologiche note per il trattamento
+      di patologie respiratorie o cutanee.
+    </li>
+    <li>
+      <strong>Non sospendere né modificare</strong> farmaci o percorsi terapeutici senza il preventivo parere del tuo medico.
+    </li>
+    <li>
+      Eventuali benefici riportati, come accade anche per i farmaci, sono <strong>variabili da persona a persona</strong> e non possono essere garantiti.
+    </li>
+    <li>
+      L’haloterapia potrebbe <strong>non essere adatta a tutti</strong>: se hai condizioni
+      respiratorie o cutanee in atto, gravidanza, allergie note al sale o altre condizioni
+      rilevanti, <strong>consulta il tuo medico</strong> prima di iniziare qualunque ciclo.
+    </li>
+  </ul>
+
+  <p class="mb-0">
+    La Clinica del Salerno fa riferimento a una <strong>letteratura scientifica internazionale</strong> che include
+    numerosi studi — pubblicati anche su banche dati come <em>PubMed</em> — che hanno valutato l’Haloterapia Controllata.
+    Tali evidenze, seppur rilevanti, <strong>non equivalgono</strong> a linee guida cliniche recepite nella legislazione italiana. </p>
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ho letto e compreso</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scrollspy.min.js"></script>
+
+    <!-- SHIM: evita errore $(...).scrollspy se plugin non presente -->
+    <script>
+      (function($){ if ($ && !$.fn.scrollspy) { $.fn.scrollspy = function(){ return this; }; } })(window.jQuery);
+    </script>
+
+    <script src="js/custom.js"></script>
+
+    <!-- CONSENSO + CLARITY loader + FAQ mobile inline (nessuno scroll) -->
+
+<script>
+  (function(){
+    const KEY = 'cds_consent_v1';
+    const MAX_AGE_MS = 180 * 24 * 60 * 60 * 1000; // ~6 mesi
+    const CLARITY_ID = 'YOUR-CLARITY-ID'; // <-- Sostituisci con il tuo ID
+    const banner = document.getElementById('cookie-banner');
+    const openPrefsLink = document.getElementById('open-cookie-preferences');
+    const prefsModalEl = document.getElementById('cookiePrefsModal');
+    const prefsModal = prefsModalEl ? new bootstrap.Modal(prefsModalEl) : null;
+
+    function getConsent(){
+  try{
+    const obj = JSON.parse(localStorage.getItem(KEY)) || null;
+    if (!obj || !obj.ts) return null;                // se manca o è vecchio, trattalo come assente
+    const expired = (Date.now() - obj.ts) > MAX_AGE_MS;
+    return expired ? null : obj;                     // se scaduto → forza riapertura banner
+  }catch(e){
+    return null;}
+}
+
+    function setConsent(obj){ localStorage.setItem(KEY, JSON.stringify(obj)); }
+
+    function loadClarity(){
+      if (window.clarity) return;
+      (function(c,l,a,r,i,t,y){ c[a]=c[a]||function(){ (c[a].q=c[a].q||[]).push(arguments) };
+        t=l.createElement(r); t.async=1; t.src='https://www.clarity.ms/tag/'+i;
+        y=l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t,y);
+      })(window, document, 'clarity', 'script', t1zg4nene4);
+    }
+    function applyConsent(consent){
+      if (!consent) { banner && (banner.style.display='block'); return; }
+      banner && (banner.style.display='none');
+      if (consent.analytics === true) loadClarity();
+    }
+
+    // Init
+    applyConsent(getConsent());
+
+    // Banner
+    document.getElementById('cookie-accept').addEventListener('click', function(){
+      const c={analytics:true, ts:Date.now()}; setConsent(c); applyConsent(c);
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function(){
+      const c={analytics:false, ts:Date.now()}; setConsent(c); applyConsent(c);
+    });
+    document.getElementById('cookie-preferences').addEventListener('click', function(){
+      if (!prefsModal) return;
+      const c = getConsent();
+      document.getElementById('consent-analytics').checked = !!(c && c.analytics);
+      prefsModal.show();
+    });
+    if (openPrefsLink) openPrefsLink.addEventListener('click', function(e){
+      e.preventDefault(); document.getElementById('cookie-preferences').click();
+    });
+    document.getElementById('save-cookie-prefs').addEventListener('click', function(){
+      const c={analytics: document.getElementById('consent-analytics').checked, ts:Date.now()};
+      setConsent(c); applyConsent(c); prefsModal && prefsModal.hide();
+    });
+
+    // ===== FAQ inline su mobile (nessuno scroll/viewport) =====
+    document.addEventListener('DOMContentLoaded', function () {
+      var isMobile = window.matchMedia('(max-width: 767.98px)');
+      var buttons = document.querySelectorAll('.faq-btn');
+
+      var faqAnswers = [
+        "L'Haloterapia Controllata è un trattamento naturale che prevede la respirazione di particelle ionizzate di sale micronizzato al momento, in un ambiente confinato e controllato.",
+        "Perché senza un sensore, che monitora e regola costantemente la concentrazione salina, erogando più sale micronizzato quando è necessario, l'efficacia del trattamento risulterebbe dipendente dalla capacità polmonare dei pazienti e dal loro numero nella stanza. Due adulti, ad esempio, respirano mediamente il doppio di uno solo. Per questo non è pensabile da parte nostra erogare una stessa quantità standardizzata di sale a più persone.",
+        "Perché le particelle, che si formano in seguito alla micronizzazione fatta al momento, si ionizzano, garantendo i benefici che il sale già frantumato non può offrire. Inoltre, riescono a rimanere separate tra loro senza l'uso di additivi iodati o di sale non polverizzato, raggiungendo così anche le basse vie respiratorie.",
+        "Sì. Utilizziamo un dispositivo medico certificato dal ministero della Salute Italiano, marcato CE, alimentato da un impianto elettrico ad uso medicale e siamo in possesso di tutte le autorizzazioni necessarie per espletare l’attività di Haloterapia Controllata.",
+        "La durata complessiva di un appuntamento per una singola seduta è di 40 minuti, con una permanenza minima nella stanza del sale pari a 30 minuti di effettiva erogazione.",
+        "Dipende dalla condizione da trattare: varia da un minimo di 12 sedute per le patologie più lievi, fino a cicli da 30 sedute per quelle più severe, preferibilmente a cadenza giornaliera.",
+        "Sì. I bambini non tollerano costrizioni al volto, trattamenti invasivi e ambienti claustrofobici. Grazie alla capiente stanza ricoperta di sale, i tanti giochi che mettiamo a disposizione, i mille colori delle luci e la musica personalizzata, i bambini potranno usufruire del trattamento divertendosi in un ambiente che apparirà loro magico.",
+        "Cloruro di sodio con grado di purezza farmaceutica, conforme alla Farmacopea Europea, acquistato da entri terzi; non abbiamo divisioni con le quali ci autocerfichiamo la purezza del sale e non adoperiamo sale alimentare iodato né altri additivi antiagglomeranti. Il sale grosso a terra (e sulle pareti), invece, ha una funzione quasi del tutto estetica e antisettica e viene regolarmente sostituito.",
+        "Perché i sali colorati sono impuri per il [2-5]%. Vengono spacciati come ricchi di svariati 'oligoelementi'; in realtà si tratta di metalli cancerogeni, se respirati. Facciamo mangiare spinaci ai nostri bambini, ma non ci sogneremmo mai di far inalare loro la polvere di ferro.",
+        "Perché i costi della pubblicità sono pagati dal paziente (ci aveva mai pensato?). L’Haloterapia Controllata NON è un metodo commerciale di franchising per massimizzare i profitti, ma un trattamento naturale che da oltre trent’anni è riconosciuto nel Mondo come un riferimento per la cura delle malattie respiratorie e cutanee.",
+        "Copriscarpe e cuffietta monouso che forniamo gratuitamente noi. I bambini, invece, un paio di calzini puliti sopra quelli che indossano, in modo da poter giocare nel sale sul pavimento liberamente, come in spiaggia. La stanza dispone di poltrone ergonomiche con poggiatesta. Consigliamo un abbigliamento comodo.",
+        "Le controindicazioni più comuni nei pazienti sani possono essere una leggera secchezza nasale-orofaringea e uno stimolo tussigeno con conseguente espettorazione come effetto benefico della mobilitazione del muco. Per condizioni cliniche particolari sarà in ogni caso somministrato un consenso informato prima del trattamento.",
+        "A seconda dell'esclusività e personalizzazione del trattamento, il prezzo a persona per una seduta singola di un ciclo parte da circa 16 euro, con una media di 24. Il genitore che accompagna il bambino entra gratis. Inoltre mettiamo a disposizione importanti scontistiche (fino al 75%) per ulteriori figli o gruppi e famiglie numerose che scelgono di effettuare il ciclo di sedute assieme.",
+        "Vista la sola recente diffusione di dispositivi medici certificati per haloterapia controllata nel mercato italiano, sebbene sia già possibile detrarne la spesa per il fitto, è ancora in corso la procedura burocratica di approvazione da parte del Ministero della Salute e l'Agenzia delle Entrate per poter far detrarre anche le relative spese per il servizio del trattamento di haloterapia controllata."
+      ];
+
+      window.showAnswer = function(index){
+        var buttons = document.querySelectorAll('.faq-btn');
+        buttons.forEach(function(btn, i){
+          if (i === index) { btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
+          else { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
+        });
+
+        // Desktop: aggiorna box centrale
+        if (!isMobile.matches) {
+          var defaultImg = document.getElementById('faq-default-img');
+          var answerText = document.getElementById('faq-answer-text');
+          if (defaultImg) defaultImg.classList.add('d-none');
+          if (answerText) { answerText.textContent = faqAnswers[index]; answerText.classList.remove('d-none'); }
+          return;
+        }
+
+        // Mobile: risposta subito sotto il pulsante cliccato
+        var clicked = buttons[index]; if (!clicked) return;
+        var next = clicked.nextElementSibling; var container = null;
+        if (next && next.classList && next.classList.contains('faq-inline-answer')) {
+          container = next;
+        } else {
+          container = document.createElement('div');
+          container.className = 'faq-inline-answer';
+          container.innerHTML = '<p></p>';
+          clicked.parentNode.insertBefore(container, clicked.nextSibling);
+        }
+        container.querySelector('p').textContent = faqAnswers[index];
+
+        // Chiudi eventuali altri pannelli aperti
+        document.querySelectorAll('.faq-inline-answer').forEach(function(el){ if (el !== container) el.remove(); });
+      };
+    });
+  })();
+</script>
+
+<!-- MODAL: Cookie Policy -->
+<div class="modal fade" id="cookiePolicyModal" tabindex="-1" aria-labelledby="cookiePolicyLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cookiePolicyLabel">Cookie Policy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <p class="intro">Usiamo due tipi di cookie:</p>
+
+        <h6>1. Cookie tecnici (necessari)</h6>
+        <p>Permettono il corretto funzionamento del sito (es. preferenze, sicurezza). Sono sempre attivi e non richiedono consenso.</p>
+
+        <h6>2. Cookie analitici anonimi (solo se lo desideri)</h6>
+        <p>Con il tuo consenso attiviamo strumenti statistici anonimi per migliorare la navigazione. Usiamo <strong>Microsoft Clarity</strong> in forma anonima.</p>
+
+        <h6>Le tue scelte</h6>
+        <ul>
+          <li>Puoi accettare o rifiutare gli analitici dal banner.</li>
+          <li>La preferenza resta salvata per ~6 mesi; puoi cambiarla quando vuoi.</li>
+          <li><a href="#" id="open-cookie-preferences-from-policy">Apri preferenze cookie</a></li>
+        </ul>
+
+        <p class="text-muted mb-0"><em>Ultimo aggiornamento: settembre 2025</em></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-primary" data-bs-dismiss="modal">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </body>
+</html>
