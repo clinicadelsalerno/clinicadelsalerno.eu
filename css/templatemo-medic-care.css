@@ -953,9 +953,33 @@ text-align: left;
   #FAQ-Interattive #faq-answer-box { display: block !important; } /* fallback visibile se JS è off */
 }
 
-/* === Cookie Policy Modal === */
-#cookiePolicyModal .modal-title {
-  color:#0080C8;
+/* Modal "Grazie" con sfondo bianco e testo nero */
+.modal-thanks {
+  background-color: var(--white-color); /* bianco */
+  color: var(--dark-color);             /* nero */
+}
+
+.modal-thanks .modal-header,
+.modal-thanks .modal-footer {
+  border: 0 !important;
+}
+
+.modal-thanks .btn-close {
+  filter: none; /* X nera di default */
+}
+
+.modal-thanks .btn-primary {
+  background-color: var(--primary-color) !important; /* blu scuro */
+  border-color: var(--primary-color) !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0.25rem #3DB5F980;
+}
+
+.modal-thanks .btn-primary:hover,
+.modal-thanks .btn-primary:focus {
+  background-color: #006eac !important; /* blu più scuro su hover */
+  border-color: #006eac !important;
+  color: #fff !important;
 }
 
 /* Priorità corretta: backdrop < modal < banner NON deve superare il modal */
