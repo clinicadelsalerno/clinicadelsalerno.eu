@@ -150,7 +150,99 @@
   border-color:#0080C8 !important;
   box-shadow:0 0 0 0.25rem #3DB5F980 !important;
 }
+/* === WhatsApp discreto (solo mobile) – cerchio 30% trasparente, icona sempre piena, con X === */
+.wzp-wa{
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 1035; /* sotto cookie banner/modal, sopra contenuti */
+  display: none; /* desktop: nascosto */
+}
 
+@media (max-width: 767.98px){
+  .wzp-wa{ display: block; }
+}
+
+.wzp-wa-fab{
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 30% trasparenza SOLO sul cerchio = 70% opaco */
+  background: rgba(0,128,200,.70);
+  color: #fff;
+  text-decoration: none;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  transform: translateY(10px);
+
+  opacity: 0;               /* solo per animazione di entrata */
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wzp-wa-fab i{
+  font-size: 22px;
+  line-height: 1;
+  color: currentColor;      /* icona sempre bianca come il link */
+}
+
+/* evita “colori strani” dopo il click */
+.wzp-wa-fab:visited{ color:#fff; }
+.wzp-wa-fab:hover{ color:#fff; }
+
+/* visibilità */
+.wzp-wa.is-visible .wzp-wa-fab{
+  opacity: 1;               /* elemento visibile, ma sfondo resta rgba(.70) */
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* feedback al tap: aumenta SOLO lo sfondo (icona resta piena) */
+.wzp-wa.is-visible .wzp-wa-fab:active{
+  background: rgba(0,128,200,.90);
+}
+
+/* X piccola in alto a sinistra */
+.wzp-wa-close{
+  position: absolute;
+  left: -6px;
+  top: -6px;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.92);
+  color: #0080C8;
+
+  font-size: 14px;
+  line-height: 16px;
+  padding: 0;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.wzp-wa.is-visible .wzp-wa-close{
+  opacity: .95;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.wzp-wa-close:active,
+.wzp-wa-close:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(61,181,249,.5);
+}
     </style>
   </head>
   <body id="top">
@@ -483,48 +575,101 @@
         </div>
       </section>
 
-      <!-- SCRIVICI -->
-      <section class="section-padding" id="Scrivici">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 col-12 mx-auto">
-              <div class="booking-form">
-                <h2 class="text-center mb-lg-3 mb-2">Scrivici</h2>
-                <form id="contactForm" action="https://formspree.io/f/xpwjbvvg" method="POST">
-                  <div class="row">
-                    <div class="col-lg-6 col-12">
-                      <input type="text" name="surname" id="surname" class="form-control" placeholder="Nome" required>
-                    </div>
-                    <div class="col-lg-6 col-12">
-                      <input type="text" name="name" id="name" class="form-control" placeholder="Cognome" required>
-                    </div>
-                    <div class="col-lg-6 col-12">
-                      <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" class="form-control" placeholder="Numero di telefono: 3337777777">
-                    </div>
-                    <div class="col-lg-6 col-12">
-                      <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Indirizzo email" required>
-                    </div>
-                    <div class="col-12">
-                      <textarea class="form-control" rows="5" id="message" name="message" placeholder="Messaggio"></textarea>
-                    </div>
-                    <div class="col-12 mt-3">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="privacyCheck" required>
-                        <label class="form-check-label" for="privacyCheck">Ho letto l'<a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Informativa Privacy</a> e acconsento al trattamento dei dati per rispondere alla mia richiesta.</label>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6 mx-auto">
-                      <button type="submit" class="form-control" id="submit-button">INVIA</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     <!-- SCRIVICI -->
+<section class="section-padding" id="Scrivici">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 mx-auto">
+        <div class="booking-form">
+          <h2 class="text-center mb-lg-3 mb-2">Scrivici</h2>
 
-    </main>
+          <form id="contactForm" action="https://formspree.io/f/xpwjbvvg" method="POST">
+            <div class="row">
+
+              <div class="col-lg-6 col-12">
+                <input
+                  type="text"
+                  name="surname"
+                  id="surname"
+                  class="form-control"
+                  placeholder="Nome"
+                  required
+                  autocomplete="given-name"
+                >
+              </div>
+
+              <div class="col-lg-6 col-12">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="form-control"
+                  placeholder="Cognome"
+                  required
+                  autocomplete="family-name"
+                >
+              </div>
+
+              <div class="col-lg-6 col-12">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  pattern="[0-9]{10}"
+                  class="form-control"
+                  placeholder="Numero di telefono: 3337777777"
+                  autocomplete="tel"
+                >
+              </div>
+
+              <div class="col-lg-6 col-12">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  pattern="[^ @]*@[^ @]*"
+                  class="form-control"
+                  placeholder="Indirizzo email"
+                  required
+                  autocomplete="email"
+                >
+              </div>
+
+              <div class="col-12">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  id="message"
+                  name="message"
+                  placeholder="Messaggio"
+                  autocomplete="off"
+                ></textarea>
+              </div>
+
+              <div class="col-12 mt-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="privacyCheck" required>
+                  <label class="form-check-label" for="privacyCheck">
+                    Ho letto l'<a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Informativa Privacy</a>
+                    e acconsento al trattamento dei dati per rispondere alla mia richiesta.
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                <button type="submit" class="form-control" id="submit-button">INVIA</button>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <!-- MODAL: Grazie per l'invio -->
 <div class="modal fade" id="thankYouModal" tabindex="-1" aria-hidden="true">
@@ -543,6 +688,7 @@
     </div>
   </div>
 </div>
+
 
 
     <footer class="site-footer section-padding pb-0" id="Contatti">
@@ -800,6 +946,22 @@ style="text-decoration:underline;">link indicato</a>
   </div>
 </div>
 
+<!-- WhatsApp (solo mobile) – compare dopo 4 scroll "reali" oppure dopo 12s in primo piano, chiudibile -->
+<div id="wzp-wa" class="wzp-wa" aria-hidden="true">
+  <button type="button" id="wzp-wa-close" class="wzp-wa-close" aria-label="Chiudi">×</button>
+
+  <a
+    id="wzp-wa-fab"
+    class="wzp-wa-fab"
+    href="https://wa.me/393784180878"
+    target="_blank"
+    rel="noopener"
+    aria-label="Scrivici su WhatsApp"
+    title="Scrivici su WhatsApp"
+  >
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+  </a>
+</div>
 
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
@@ -813,6 +975,128 @@ style="text-decoration:underline;">link indicato</a>
     </script>
 
     <script src="js/custom.js"></script>
+
+<script>
+(function(){
+  const wrap  = document.getElementById('wzp-wa');
+  const close = document.getElementById('wzp-wa-close');
+  if (!wrap || !close) return;
+
+  const mq = window.matchMedia('(max-width: 767.98px)');
+
+  // === Regola: mostra dopo 4 "scroll" reali (1 scroll = 1 swipe/burst) ===
+  const TARGET = 4;
+  const END_BURST_MS = 260;     // fine swipe: nessun evento scroll per 260ms
+  const MIN_BURST_PX = 140;     // ignora micro scroll involontari
+  const COOLDOWN_MS = 420;      // evita doppi conteggi da inerzia/elasticità iOS
+
+  let dismissed = false;        // non viene salvato: ogni riapertura riparte
+  let shown = false;
+
+  let count = 0;
+
+  let burstTimer = null;
+  let burstStartY = 0;
+  let lastY = 0;
+  let lastCountTs = 0;
+  let bursting = false;
+
+ function hide(){
+  // Evita warning: non impostare aria-hidden se il focus è ancora dentro il widget
+  if (wrap.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+  wrap.classList.remove('is-visible');
+  wrap.setAttribute('aria-hidden','true');
+}
+
+  function detach(){
+    window.removeEventListener('scroll', onScroll);
+    if (burstTimer) { clearTimeout(burstTimer); burstTimer = null; }
+    bursting = false;
+  }
+
+  function show(){
+    if (shown || dismissed || !mq.matches) return;
+    shown = true;
+    wrap.classList.add('is-visible');
+    wrap.setAttribute('aria-hidden','false');
+    detach();
+  }
+
+  function endBurst(){
+    burstTimer = null;
+    if (!bursting) return;
+
+    bursting = false;
+
+    const delta = Math.abs(lastY - burstStartY);
+    const now = Date.now();
+
+    // 1) scarta micro-scroll
+    if (delta < MIN_BURST_PX) return;
+
+    // 2) scarta conteggi troppo ravvicinati (anti-doppio conteggio per inerzia)
+    if ((now - lastCountTs) < COOLDOWN_MS) return;
+
+    lastCountTs = now;
+    count += 1;
+
+    if (count >= TARGET) show();
+  }
+
+  function onScroll(){
+    if (!mq.matches || dismissed || shown) return;
+
+    const y = window.scrollY;
+    lastY = y;
+
+    if (!bursting) {
+      bursting = true;
+      burstStartY = y;
+    }
+
+    if (burstTimer) clearTimeout(burstTimer);
+    burstTimer = setTimeout(endBurst, END_BURST_MS);
+  }
+
+  function start(){
+    hide();
+    shown = false;
+    count = 0;
+
+    bursting = false;
+    burstStartY = window.scrollY;
+    lastY = window.scrollY;
+    lastCountTs = 0;
+
+    detach();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  close.addEventListener('click', function(){
+    dismissed = true;
+    hide();
+    detach();
+  });
+
+  function init(){
+    hide();
+
+    if (!mq.matches) { detach(); return; }
+    if (dismissed)  { detach(); return; }
+
+    start();
+  }
+
+  if (mq.addEventListener) mq.addEventListener('change', init);
+  else if (mq.addListener) mq.addListener(init);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
 
     <!-- CONSENSO + CLARITY loader + FAQ mobile inline (nessuno scroll) -->
 
@@ -889,7 +1173,7 @@ style="text-decoration:underline;">link indicato</a>
         "In letteratura scientifica L'Haloterapia Controllata è indicata come supporto in ambito respiratorio e dermatologico, in particolare per rinite/allergie respiratorie, rinosinusite/sinusite, asma, bronchite, BPCO, adenoidi e tonsille ingrossate, e per condizioni cutanee come dermatite atopica/eczema e psoriasi.",
         "Sì. I bambini non tollerano costrizioni al volto, trattamenti invasivi e ambienti claustrofobici. Grazie alla capiente stanza ricoperta di sale, i tanti giochi che mettiamo a disposizione, i mille colori delle luci e la musica personalizzata, i bambini potranno usufruire del trattamento divertendosi in un ambiente che apparirà loro magico.",
         "Cloruro di sodio con grado di purezza farmaceutica, conforme alla Farmacopea Europea, acquistato da entri terzi; non abbiamo divisioni con le quali ci autocerfichiamo la purezza del sale e non adoperiamo sale alimentare iodato né altri additivi antiagglomeranti. Il sale grosso a terra (e sulle pareti), invece, ha una funzione quasi del tutto estetica e antisettica e viene regolarmente sostituito.",
-        "Perché i sali colorati sono impuri per il [2-5]%. Vengono spacciati come ricchi di svariati 'oligoelementi'; in realtà si tratta di metalli cancerogeni, se respirati. Facciamo mangiare spinaci ai nostri bambini, ma non ci sogneremmo mai di far inalare loro la polvere di ferro.",
+        "Perché i sali colorati sono impuri (2-5%). Vengono spacciati come ricchi di svariati 'oligoelementi'; in realtà si tratta di metalli cancerogeni o tossici, se respirati. Facciamo mangiare spinaci ai nostri bambini, ma non ci sogneremmo mai di far inalare loro polvere di ferro.",
         "Perché i costi della pubblicità sono pagati dal paziente (ci aveva mai pensato?). L’Haloterapia Controllata NON è un metodo commerciale di franchising per massimizzare i profitti, ma un trattamento naturale che da oltre trent’anni è riconosciuto nel Mondo come un riferimento per la cura delle malattie respiratorie e cutanee.",
         "Copriscarpe e cuffietta monouso che forniamo gratuitamente noi. I bambini, invece, un paio di calzini puliti sopra quelli che indossano, in modo da poter giocare nel sale sul pavimento liberamente, come in spiaggia. La stanza dispone di poltrone ergonomiche con poggiatesta. Consigliamo un abbigliamento comodo.",
         "Le controindicazioni più comuni nei pazienti sani possono essere una leggera secchezza nasale-orofaringea e uno stimolo tussigeno con conseguente espettorazione come effetto benefico della mobilitazione del muco. Per condizioni cliniche particolari sarà in ogni caso somministrato un consenso informato prima del trattamento.",
