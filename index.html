@@ -13,44 +13,46 @@
 {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
+  "@id": "https://www.clinicadelsalerno.eu/#medicalbusiness",
   "name": "Clinica del Salerno",
-  "url": "https://www.clinicadelsalerno.eu",
+  "url": "https://www.clinicadelsalerno.eu/",
   "image": "https://www.clinicadelsalerno.eu/images/logo-clinica/logo-clinica.png",
   "logo": "https://www.clinicadelsalerno.eu/images/logo-clinica/logo-clinica.png",
   "telephone": "+39-378-418-0878",
+  "priceRange": "€€",
+  "sameAs": [
+  "https://m.facebook.com/61566811559559/",
+  "https://www.instagram.com/clinicadelsalerno/"
+],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Viale Antonio Gramsci, 58",
     "addressLocality": "Salerno",
+    "addressRegion": "SA",
     "postalCode": "84126",
     "addressCountry": "IT"
   },
-  "geo": { "@type": "GeoCoordinates", "latitude": 40.6906367, "longitude": 14.7756778 },
-  "priceRange": "€€",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.6906367,
+    "longitude": 14.7756778
+  },
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
       "opens": "14:30",
-      "closes": "20:00"
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "09:30",
+      "closes": "13:00"
     }
-  ],
-  "openingHours": [
-    "Mo-Fr 14:30-20:00",
-    "Mo-Sa by appointment in the morning",
-    "Su closed"
-  ],
-  "hasMap": "https://www.google.com/maps/place/Clinica+del+Salerno/@40.6906366,14.7708123,749m/data=!3m2!1e3!4b1!4m6!3m5!1s0xe3ffceb33286e3b:0x88387d0f16b252bb!8m2!3d40.6906367!4d14.7756778!16s%2Fg%2F11y7cdpdg4",
-  "sameAs": [
-    "https://www.instagram.com/clinicadelsalerno/",
-    "https://m.facebook.com/61566811559559/",
-    "https://wa.me/393784180878"
-  ],
-  "description": "Mattine (Lun–Sab) su prenotazione. Domenica chiuso."
+  ]
 }
 </script>
-
-
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +65,7 @@
     <link href="css/owl.theme.default.min.css" rel="stylesheet">
     <link href="css/templatemo-medic-care.css" rel="stylesheet">
 
-     <!-- Favicons -->
+   <!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="/images/icons/favicon.svg">
@@ -71,16 +73,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
 <link rel="manifest" href="/images/icons/site.webmanifest">
 <meta name="theme-color" content="#0080C8">
-
-    <!-- Stili minimi per banner cookie e FAQ inline mobile (fallback) -->
-    <style>
-      :root{ --focus-ring:0 0 0 0.25rem rgba(61,181,249,.5) }
-      a:focus-visible, button:focus-visible{ outline:none; box-shadow:var(--focus-ring) }
-      /* Banner cookie */
-      #cookie-banner{ position:fixed; z-index:1055; left:0; right:0; bottom:0; background:#fff; border-top:1px solid #eaeaea; box-shadow:0 -4px 24px rgba(0,0,0,.08); padding:1rem; display:none }
-      #cookie-banner .btn{ margin-right:.5rem }
-      @media (max-width:575.98px){ #cookie-banner .btn{ width:100%; margin:.25rem 0 } }
-      /* FAQ inline answer container (inserito da JS su mobile) */
+<style>
 
 /* === Cookie banner: colori e dimensioni aggiornati === */
 #cookie-banner {
@@ -705,8 +698,8 @@
                 <span>14:30 - 19:30 </span>
               </li>
               <li class="list-group-item d-flex">
-                Da Lun. a Sab. mattina  
-                <span>Su prenotazione </span>
+                Da Lunedì a Sabato   
+                <span>09:30 - 13:00 </span>
               </li>
               <li class="list-group-item d-flex">
                 Domenica 
@@ -716,7 +709,7 @@
           </div>
           <div class="col-lg-3 col-md-6 col-12 my-4 my-lg-0">
             <h5 class="mb-lg-4 mb-3">Indirizzo</h5>
-            <p><a href="mailto:clinicadelsalerno@gmail.com">clinicadelsalerno@gmail.com</a><p>
+            <p><a href="mailto:clinicadelsalerno@gmail.com">clinicadelsalerno@gmail.com</a></p>
             <p>
            <a href="https://www.google.com/maps/place/Clinica+del+Salerno/@40.6906366,14.7708123,749m/data=!3m2!1e3!4b1!4m6!3m5!1s0xe3ffceb33286e3b:0x88387d0f16b252bb!8m2!3d40.6906367!4d14.7756778!16s%2Fg%2F11y7cdpdg4?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
     Viale Antonio Gramsci, 58<br>Salerno (SA) 84126<br>Italy
