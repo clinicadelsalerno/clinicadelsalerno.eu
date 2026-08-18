@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -167,6 +168,28 @@ def fetch_all_reviews(access_token: str) -> tuple[list[dict[str, Any]], float, i
     return reviews, average_rating, total_review_count
 
 
+
+def keep_original_review_text(value: Any) -> str:
+    """
+    Se Google restituisce nel commento sia la traduzione sia il testo originale,
+    conserva soltanto il testo dopo "(Original)".
+
+    Negli altri casi lascia il commento invariato.
+    """
+    text = str(value or "").strip()
+    if not text:
+        return ""
+
+    translated_marker = re.search(r"\(\s*Translated by Google\s*\)", text, flags=re.IGNORECASE)
+    original_marker = re.search(r"\(\s*Original\s*\)", text, flags=re.IGNORECASE)
+
+    if translated_marker and original_marker and original_marker.start() > translated_marker.start():
+        original = text[original_marker.end():].strip()
+        if original:
+            return original
+
+    return text
+
 def normalize_review(review: dict[str, Any]) -> dict[str, Any]:
     reviewer = review.get("reviewer")
     if not isinstance(reviewer, dict):
@@ -213,7 +236,7 @@ def normalize_review(review: dict[str, Any]) -> dict[str, Any]:
             "profilePhotoUrl": profile_photo,
         },
         "starRating": str(review.get("starRating", "") or "").strip(),
-        "comment": str(review.get("comment", "") or "").strip(),
+        "comment": keep_original_review_text(review.get("comment", "")),
     }
 
     if media_items:
