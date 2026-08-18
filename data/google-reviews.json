@@ -1,0 +1,65 @@
+{
+  "businessName": "Clinica del Salerno",
+  "provider": "Google",
+  "rating": 5.0,
+  "totalReviews": 19,
+  "reviewUrl": "https://g.page/r/CbtSshYPfTiIEAE/review",
+  "reviews": [
+    {
+      "reviewer": {
+        "displayName": "Titti Franco",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "Consiglio la Haloterapia a tutti! Mio figlio soffre di muco timpano cristallizzato da anni. Il suo udito ormai stava scomparendo, creandogli gravi disagi nella vita quotidiana. Abbiamo sperimentato, prima di un ipotetico intervento chirurgico, la terapia presso la Clinica del Salerno con risultati molto positivi."
+    },
+    {
+      "reviewer": {
+        "displayName": "Ipa Пасічник",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "Esperienza bellissima, personale gentile e disponibile, posto pulito ed accogliente. Grazie di tutto."
+    },
+    {
+      "reviewer": {
+        "displayName": "Valeria Pugliese",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "La Clinica del Salerno è un luogo accogliente dove trovare relax e benefici per la salute respiratoria. Personale gentile, ambienti puliti e risultati concreti: consigliatissima per chi cerca un benessere naturale."
+    },
+    {
+      "reviewer": {
+        "displayName": "Madre del paziente",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "Mio figlio soffre di ipertrofia dei turbinati, delle tonsille e delle adenoidi. Sono entusiasta dei risultati ottenuti già dopo poche sedute: sta espellendo i muchi, respira molto meglio e il suo stato generale di salute è migliorato. L'ambiente è gradevole e rilassante. I titolari sono professionali e disponibili. Consiglio vivamente questa struttura."
+    },
+    {
+      "reviewer": {
+        "displayName": "Coppia di pazienti",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "Con mia moglie abbiamo fatto insieme un ciclo completo di sedute. Dopo solo 3 sedute, abbiamo notato notevoli miglioramenti. Dormiamo meglio e il riposo notturno è più soddisfacente. Stiamo raccomandando questo trattamento a familiari ed amici."
+    },
+    {
+      "reviewer": {
+        "displayName": "Paziente",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "Il mio otorinolaringoiatra mi ha prescritto un ciclo di sedute presso questa clinica. Inizialmente ero titubante, ma ho riscontrato che funziona. Inoltre il centro è nuovo e pulito ed il personale è cordiale."
+    },
+    {
+      "reviewer": {
+        "displayName": "Madre della paziente",
+        "profilePhotoUrl": ""
+      },
+      "starRating": "FIVE",
+      "comment": "Struttura molto bella, nuova e pulita. Volevo ringraziare Rosa e Andrea per la loro professionalità, umanità e attenzione. Grazie alla terapia abbiamo risolto il problema delle adenoidi e abbiamo scampato l’intervento alla piccola. Grazie di cuore."
+    }
+  ]
+}

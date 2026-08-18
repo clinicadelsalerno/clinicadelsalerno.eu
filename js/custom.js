@@ -7,31 +7,6 @@
         $(".navbar-collapse").collapse('hide');
     });
 
-    // REVIEWS CAROUSEL
-    $('.reviews-carousel').owlCarousel({
-        center: true,
-        loop: true,
-        nav: true,
-        dots: false,
-        autoplay: true,
-        autoplayTimeout: 12000,
-        autoplaySpeed: 1200,
-        smartSpeed: 1200,
-        responsive:{
-          0:{
-            items:1,
-          },
-          768:{
-            items:2,
-            margin: 100,
-          },
-          1280:{
-            items:2,
-            margin: 100,
-          }
-        }
-    });
-
     // Banner Carousel
     // Banner Carousel — avvio automatico, niente pausa su hover, opzioni forzate
 (function () {
@@ -66,9 +41,6 @@ if (window.bootstrap && bootstrap.ScrollSpy) {
   } catch (e) {}
 }
 
-      var ReviewsOwlItem = $('.reviews-carousel .owl-item').width();
-
-      $('.reviews-carousel .owl-nav').css({'width' : (ReviewsOwlItem) + 'px'});
     }
 
     $(window).on("resize", ReviewsNavResize);
@@ -233,4 +205,287 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+});
+
+
+// ---- GOOGLE REVIEWS WIDGET DINAMICO ----
+document.addEventListener('DOMContentLoaded', function () {
+  var widget = document.querySelector('[data-google-reviews-widget]');
+  if (!widget) return;
+
+  var source = widget.getAttribute('data-reviews-source') || 'data/google-reviews.json';
+  var reviewUrl = widget.getAttribute('data-review-url') || 'https://g.page/r/CbtSshYPfTiIEAE/review';
+  var carousel = widget.querySelector('.google-live-reviews-carousel');
+  var ratingEl = widget.querySelector('[data-google-rating]');
+  var totalEl = widget.querySelector('[data-google-total]');
+  var summaryStarsEl = widget.querySelector('.google-reviews-stars');
+  var writeBtn = widget.querySelector('.google-reviews-write-btn');
+
+  if (!carousel) return;
+
+  /*
+   * Solo anteprima locale (file://): serve a poter aprire index.html con doppio clic
+   * prima della pubblicazione. Sul sito online NON sostituisce mai data/google-reviews.json.
+   */
+  var offlinePreviewData = {
+    businessName: 'Clinica del Salerno',
+    provider: 'Google',
+    rating: 5.0,
+    totalReviews: 19,
+    reviewUrl: reviewUrl,
+    reviews: [
+      {
+        reviewer: { displayName: 'Titti Franco', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: 'Consiglio la Haloterapia a tutti! Mio figlio soffre di muco timpano cristallizzato da anni. Il suo udito ormai stava scomparendo, creandogli gravi disagi nella vita quotidiana. Abbiamo sperimentato, prima di un ipotetico intervento chirurgico, la terapia presso la Clinica del Salerno con risultati molto positivi.'
+      },
+      {
+        reviewer: { displayName: 'Ipa Пасічник', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: 'Esperienza bellissima, personale gentile e disponibile, posto pulito ed accogliente. Grazie di tutto.'
+      },
+      {
+        reviewer: { displayName: 'Valeria Pugliese', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: 'La Clinica del Salerno è un luogo accogliente dove trovare relax e benefici per la salute respiratoria. Personale gentile, ambienti puliti e risultati concreti: consigliatissima per chi cerca un benessere naturale.'
+      },
+      {
+        reviewer: { displayName: 'Madre del paziente', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: "Mio figlio soffre di ipertrofia dei turbinati, delle tonsille e delle adenoidi. Sono entusiasta dei risultati ottenuti già dopo poche sedute: sta espellendo i muchi, respira molto meglio e il suo stato generale di salute è migliorato. L'ambiente è gradevole e rilassante. I titolari sono professionali e disponibili. Consiglio vivamente questa struttura."
+      },
+      {
+        reviewer: { displayName: 'Coppia di pazienti', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: 'Con mia moglie abbiamo fatto insieme un ciclo completo di sedute. Dopo solo 3 sedute, abbiamo notato notevoli miglioramenti. Dormiamo meglio e il riposo notturno è più soddisfacente. Stiamo raccomandando questo trattamento a familiari ed amici.'
+      },
+      {
+        reviewer: { displayName: 'Paziente', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: 'Il mio otorinolaringoiatra mi ha prescritto un ciclo di sedute presso questa clinica. Inizialmente ero titubante, ma ho riscontrato che funziona. Inoltre il centro è nuovo e pulito ed il personale è cordiale.'
+      },
+      {
+        reviewer: { displayName: 'Madre della paziente', profilePhotoUrl: '' },
+        starRating: 'FIVE',
+        comment: 'Struttura molto bella, nuova e pulita. Volevo ringraziare Rosa e Andrea per la loro professionalità, umanità e attenzione. Grazie alla terapia abbiamo risolto il problema delle adenoidi e abbiamo scampato l’intervento alla piccola. Grazie di cuore.'
+      }
+    ]
+  };
+
+  function normalizeRating(value) {
+    if (typeof value === 'number' && isFinite(value)) return value;
+    var numeric = Number(value);
+    if (isFinite(numeric) && numeric > 0) return numeric;
+    var map = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
+    return map[String(value || '').toUpperCase()] || 0;
+  }
+
+  function initials(name) {
+    return String(name || 'G')
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map(function (part) { return part.charAt(0).toUpperCase(); })
+      .join('') || 'G';
+  }
+
+  function starString(value) {
+    var n = Math.max(0, Math.min(5, Math.round(normalizeRating(value))));
+    return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+  }
+
+  function createEl(tag, className, text) {
+    var el = document.createElement(tag);
+    if (className) el.className = className;
+    if (typeof text === 'string') el.textContent = text;
+    return el;
+  }
+
+  function createGoogleGIcon() {
+    var badge = createEl('span', 'google-review-provider');
+    badge.setAttribute('aria-label', 'Recensione Google');
+    badge.innerHTML = '<svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">' +
+      '<path fill="#4285F4" d="M17.64 9.205c0-.638-.057-1.252-.164-1.841H9v3.482h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>' +
+      '<path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.258c-.806.54-1.837.859-3.048.859-2.344 0-4.328-1.583-5.036-3.71H.957v2.331C2.438 15.983 5.482 18 9 18z"/>' +
+      '<path fill="#FBBC05" d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.348 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z"/>' +
+      '<path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.581C13.463.892 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>' +
+      '</svg>';
+    return badge;
+  }
+
+  function getFirstReviewMedia(review) {
+    var items = Array.isArray(review.reviewMediaItems) ? review.reviewMediaItems : [];
+
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i] || {};
+      var url = item.thumbnailUrl || item.mediaUrl || item.url || '';
+      if (url) return url;
+    }
+
+    return '';
+  }
+
+  function destroyOwlIfNeeded() {
+    if (!window.jQuery || !jQuery.fn || !jQuery.fn.owlCarousel) return;
+
+    var $carousel = jQuery(carousel);
+    if ($carousel.hasClass('owl-loaded')) {
+      $carousel.trigger('destroy.owl.carousel');
+      $carousel.removeClass('owl-loaded owl-hidden owl-drag owl-grab');
+    }
+  }
+
+  function appendAvatar(person, name, photoUrl) {
+    if (!photoUrl) {
+      person.appendChild(createEl('div', 'google-review-avatar', initials(name)));
+      return;
+    }
+
+    var img = createEl('img', 'google-review-avatar-img');
+    img.src = photoUrl;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    img.addEventListener('error', function () {
+      if (!img.parentNode) return;
+      img.parentNode.replaceChild(createEl('div', 'google-review-avatar', initials(name)), img);
+    }, { once: true });
+    person.appendChild(img);
+  }
+
+  function buildCard(review) {
+    review = review || {};
+
+    var reviewer = review.reviewer || {};
+    var rating = normalizeRating(review.starRating || review.rating);
+    var name = reviewer.displayName || review.displayName || 'Paziente Google';
+    var photo = reviewer.profilePhotoUrl || review.profilePhotoUrl || '';
+    var text = review.comment || review.text || '';
+    var media = getFirstReviewMedia(review);
+
+    var card = createEl('article', 'google-review-card');
+    var inner = createEl('div', 'google-review-card-inner');
+    var header = createEl('div', 'google-review-header');
+    var person = createEl('div', 'google-review-person');
+
+    appendAvatar(person, name, photo);
+
+    var meta = createEl('div', 'google-review-meta');
+    meta.appendChild(createEl('span', 'google-review-name', name));
+    person.appendChild(meta);
+
+    header.appendChild(person);
+    header.appendChild(createGoogleGIcon());
+    inner.appendChild(header);
+
+    var stars = createEl('div', 'google-review-card-stars', starString(rating));
+    stars.setAttribute('aria-label', (rating || 0) + ' stelle su 5');
+    inner.appendChild(stars);
+
+    var textWrap = createEl('div', 'google-review-text-wrap');
+    var textBox = createEl('div', 'google-review-text-box');
+    var paragraph = createEl('p', 'google-review-text', text);
+
+    if (text.length > 210) paragraph.classList.add('is-collapsed');
+    textBox.appendChild(paragraph);
+
+    if (text.length > 210) {
+      var more = createEl('button', 'google-review-more', 'Leggi di più');
+      more.type = 'button';
+      more.addEventListener('click', function () {
+        paragraph.classList.toggle('is-collapsed');
+        more.textContent = paragraph.classList.contains('is-collapsed') ? 'Leggi di più' : 'Mostra meno';
+      });
+      textBox.appendChild(more);
+    }
+
+    textWrap.appendChild(textBox);
+
+    if (media) {
+      var mediaImg = createEl('img', 'google-review-media');
+      mediaImg.src = media;
+      mediaImg.alt = 'Foto allegata alla recensione Google';
+      mediaImg.loading = 'lazy';
+      mediaImg.referrerPolicy = 'no-referrer';
+      mediaImg.addEventListener('error', function () {
+        if (mediaImg.parentNode) mediaImg.remove();
+      }, { once: true });
+      textWrap.appendChild(mediaImg);
+    }
+
+    inner.appendChild(textWrap);
+    card.appendChild(inner);
+
+    return card;
+  }
+
+  function showUnavailable() {
+    destroyOwlIfNeeded();
+    carousel.innerHTML = '';
+    carousel.appendChild(createEl('div', 'google-reviews-empty', 'Recensioni Google temporaneamente non disponibili.'));
+  }
+
+  function render(data) {
+    data = data || {};
+
+    var reviews = Array.isArray(data.reviews) ? data.reviews : [];
+    var average = normalizeRating(data.rating || data.averageRating);
+    var total = Number(data.totalReviews || data.totalReviewCount || reviews.length || 0);
+    var liveReviewUrl = data.reviewUrl || reviewUrl;
+
+    if (ratingEl) ratingEl.textContent = average ? average.toFixed(1) : '—';
+    if (totalEl) totalEl.textContent = total;
+    if (summaryStarsEl && average) {
+      summaryStarsEl.textContent = starString(average);
+      summaryStarsEl.setAttribute('aria-label', average.toFixed(1) + ' stelle su 5');
+    }
+    if (writeBtn) writeBtn.href = liveReviewUrl;
+
+    destroyOwlIfNeeded();
+    carousel.innerHTML = '';
+
+    if (!reviews.length) {
+      showUnavailable();
+      return;
+    }
+
+    reviews.forEach(function (review) {
+      carousel.appendChild(buildCard(review));
+    });
+
+    if (window.jQuery && jQuery.fn && jQuery.fn.owlCarousel) {
+      jQuery(carousel).owlCarousel({
+        loop: reviews.length > 3,
+        nav: true,
+        dots: true,
+        autoplay: reviews.length > 1,
+        autoplayTimeout: 7000,
+        autoplaySpeed: 800,
+        autoplayHoverPause: false,
+        smartSpeed: 800,
+        margin: 16,
+        responsive: {
+          0: { items: 1 },
+          768: { items: Math.min(2, reviews.length) },
+          1100: { items: Math.min(3, reviews.length) }
+        }
+      });
+    }
+  }
+
+  if (window.location.protocol === 'file:') {
+    render(offlinePreviewData);
+    return;
+  }
+
+  fetch(source, { cache: 'no-store' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('File recensioni non disponibile: HTTP ' + response.status);
+      return response.json();
+    })
+    .then(render)
+    .catch(function (error) {
+      console.warn('Impossibile caricare le recensioni Google:', error);
+      showUnavailable();
+    });
 });

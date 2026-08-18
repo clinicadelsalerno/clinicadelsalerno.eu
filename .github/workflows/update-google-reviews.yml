@@ -1,0 +1,79 @@
+name: Aggiorna recensioni Google e pubblica il sito
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Aggiornamento automatico ogni 6 ore.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Prepara Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Aggiorna le recensioni Google
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+        run: python scripts/update_google_reviews.py
+
+      - name: Salva il JSON aggiornato nel repository
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain -- data/google-reviews.json)" ]; then
+            echo "Il file data/google-reviews.json è già aggiornato."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/google-reviews.json
+            git commit -m "Aggiorna recensioni Google"
+
+            if ! git push; then
+              echo "::warning::Il JSON è stato generato e verrà pubblicato, ma il commit automatico non è stato accettato dal branch."
+            fi
+          fi
+
+      - name: Configura GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepara i file del sito per GitHub Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "."
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Pubblica su GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
