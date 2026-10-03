@@ -355,17 +355,24 @@
         </div>
       </section>
 
-      <!-- TIMELINE COMPLETA -->
+      <!-- LA STORIA: timeline compatta con approfondimenti apribili -->
       <section class="section-padding pb-0" id="timeline">
         <div class="container">
           <div class="row">
-            <h2 class="text-center mb-lg-5 mb-4">La nostra linea temporale</h2>
+            <h2 class="text-center mb-lg-5 mb-4">La nostra Storia</h2>
             
             <div class="timeline">
               <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
                 <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
-                  <h3 class=" text-light">La scoperta scientifica</h3>
-                  <p>Il medico polacco Feliks Boczkowski scopre i benefici dell’aria salmastra secca per le vie respiratorie, studiando i minatori delle miniere di sale di Wielcza, i quali, nonostante le condizioni lavorative estreme, non soffrivano di patologie dell’apparato respiratorio. Un'antica forma di trattamento naturale, nota con il nome di speleoterapia, si sviluppa nell'Est Europa</p>
+                  <h3 class="text-light">
+                    <button class="timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline-detail-1843">
+                      <span>La scoperta scientifica</span>
+                      <i class="bi bi-chevron-down timeline-chevron" aria-hidden="true"></i>
+                    </button>
+                  </h3>
+                  <div class="timeline-details" id="timeline-detail-1843" hidden>
+                    <p>Il medico polacco Feliks Boczkowski scopre i benefici dell’aria salmastra secca per le vie respiratorie, studiando i minatori delle miniere di sale di Wielcza, i quali, nonostante le condizioni lavorative estreme, non soffrivano di patologie dell’apparato respiratorio. Un'antica forma di trattamento naturale, nota con il nome di speleoterapia, si sviluppa nell'Est Europa</p>
+                  </div>
                 </div>
                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
                   <i class="bi-lightbulb timeline-icon"></i>
@@ -377,8 +384,15 @@
 
               <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
                 <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
-                  <h3 class=" text-light">Studi medici pioneristici</h3>
-                  <p> Vengono svolte  le prime <a href="https://pubmed.ncbi.nlm.nih.gov/10161255/" target="_blank"><strong>RICERCHE CLINICHE</strong></a> in Europa che confermano gli importanti effetti positivi del sale micronizzato per le malattie respiratorie e cutanee. Nasce così l'Haloterapia Controllata, svolta in un ambiente protetto in una stanza dedicata.</p>
+                  <h3 class="text-light">
+                    <button class="timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline-detail-anni90">
+                      <span>Studi medici pioneristici</span>
+                      <i class="bi bi-chevron-down timeline-chevron" aria-hidden="true"></i>
+                    </button>
+                  </h3>
+                  <div class="timeline-details" id="timeline-detail-anni90" hidden>
+                    <p> Vengono svolte  le prime <a class="timeline-research-link" href="https://pubmed.ncbi.nlm.nih.gov/10161255/" target="_blank" rel="noopener noreferrer" title="Apri le ricerche cliniche in una nuova scheda"><strong>RICERCHE CLINICHE</strong> <i class="bi bi-box-arrow-up-right research-link-icon" aria-hidden="true"></i><span class="visually-hidden"> (si apre in una nuova scheda)</span></a> in Europa che confermano gli importanti effetti positivi del sale micronizzato per le malattie respiratorie e cutanee. Nasce così l'Haloterapia Controllata, svolta in un ambiente protetto in una stanza dedicata.</p>
+                  </div>
                 </div>
                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
                   <i class="bi-journal-text timeline-icon"></i>
@@ -390,8 +404,15 @@
 
               <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
                 <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
-                  <h3 class=" text-light">I primi dispositivi medici</h3>
-                  <p>Viene lanciato sul mercato, da un'azienda leader nel settore medicale, il primo micronizzatore salino in grado di replicare gli effetti curativi dell'Haloterapia Controllata, grazie ad un dispositvo integrato che misura costantemente la concentrazione di sale nella stanza dove viene istallato.  </p>
+                  <h3 class="text-light">
+                    <button class="timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline-detail-1991">
+                      <span>I primi dispositivi medici</span>
+                      <i class="bi bi-chevron-down timeline-chevron" aria-hidden="true"></i>
+                    </button>
+                  </h3>
+                  <div class="timeline-details" id="timeline-detail-1991" hidden>
+                    <p>Viene lanciato sul mercato, da un'azienda leader nel settore medicale, il primo micronizzatore salino in grado di replicare gli effetti curativi dell'Haloterapia Controllata, grazie ad un dispositvo integrato che misura costantemente la concentrazione di sale nella stanza dove viene istallato.  </p>
+                  </div>
                 </div>
                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
                   <i class="bi-gear timeline-icon"></i>
@@ -403,9 +424,16 @@
 
               <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
                 <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
-                  <h3 class=" text-light">Terapia medica riconosciuta</h3>
-                  <p class="mb-0 pb-0">Dopo 15 anni di studi scientifici svolti con quel pioneristico dispositivo, e con le sue successive versioni aggiorante sempre più perfezionate, sono stati pubblicati centinaia di studi medici, grazie ai quali l'Haloterapia Controllata è diventata uno standard di cura in diverse nazioni.</p>
-                  <p>L'azienda produce così il suo primo halogeneratore ad uso medicale al mondo, classe II A, marcato CE.</p>
+                  <h3 class="text-light">
+                    <button class="timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline-detail-2006">
+                      <span>Terapia medica riconosciuta</span>
+                      <i class="bi bi-chevron-down timeline-chevron" aria-hidden="true"></i>
+                    </button>
+                  </h3>
+                  <div class="timeline-details" id="timeline-detail-2006" hidden>
+                    <p class="mb-0 pb-0">Dopo 15 anni di studi scientifici svolti con quel pioneristico dispositivo, e con le sue successive versioni aggiorante sempre più perfezionate, sono stati pubblicati centinaia di studi medici, grazie ai quali l'Haloterapia Controllata è diventata uno standard di cura in diverse nazioni.</p>
+                    <p>L'azienda produce così il suo primo halogeneratore ad uso medicale al mondo, classe II A, marcato CE.</p>
+                  </div>
                 </div>
                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
                   <i class="bi-award timeline-icon"></i>
@@ -417,8 +445,15 @@
 
               <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
                 <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
-                  <h3 class=" text-light">Apre a Salerno il primo centro di Haloterapia Controllata</h3>
-                  <p>Dopo ulteriori anni di miglioramento e consolidamento nel mercato, con migliaia di istallazioni nel Mondo, la Clinica del Salerno decide di portare ai pazienti della provincia campana la sicurezza ed efficacia proprio della più recente versione di quello stesso dispositivo medico, riferimento mondiale per l'Haloterapia Controllata.</p>
+                  <h3 class="text-light">
+                    <button class="timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline-detail-2024">
+                      <span>Apre a Salerno il primo centro di Haloterapia Controllata</span>
+                      <i class="bi bi-chevron-down timeline-chevron" aria-hidden="true"></i>
+                    </button>
+                  </h3>
+                  <div class="timeline-details" id="timeline-detail-2024" hidden>
+                    <p>Dopo ulteriori anni di miglioramento e consolidamento nel mercato, con migliaia di istallazioni nel Mondo, la Clinica del Salerno decide di portare ai pazienti della provincia campana la sicurezza ed efficacia proprio della più recente versione di quello stesso dispositivo medico, riferimento mondiale per l'Haloterapia Controllata.</p>
+                  </div>
                 </div>
                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
                   <i class="bi-gem timeline-icon"></i>
@@ -430,8 +465,15 @@
 
               <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
                 <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
-                  <h3 class=" text-light">La nostra missione</h3>
-                  <p>Secondo la visione della Clinica del Salerno, la <strong>salute</strong> di ciascuno di noi non coincide con l'eliminazione il prima possibile dei sintomi per massimizzare la produttività lavorativa o scolastica, come fossimo macchine, ma, in accordo con la definizione dell'OMS, <strong>uno stato di equilibrio e completo benessere, sia fisico che mentale</strong>. Assieme all'Associazione Mondiale di Haloterapia, di cui facciamo parte, diversi otorinolaringoiatri, pneumologi e dermatologi che condividono questo approccio, ambiamo a trasmettere una cultura della <strong>cura</strong> dell'apparato repiratorio e della cute, <strong>scientificamente comprovata</strong>, attenta al paziente, lenta (<strong>slow-health</strong>) e <strong>sostenibile</strong>. </p>
+                  <h3 class="text-light">
+                    <button class="timeline-toggle" type="button" aria-expanded="false" aria-controls="timeline-detail-futuro">
+                      <span>La nostra missione</span>
+                      <i class="bi bi-chevron-down timeline-chevron" aria-hidden="true"></i>
+                    </button>
+                  </h3>
+                  <div class="timeline-details" id="timeline-detail-futuro" hidden>
+                    <p>Secondo la visione della Clinica del Salerno, la <strong>salute</strong> di ciascuno di noi non coincide con l'eliminazione il prima possibile dei sintomi per massimizzare la produttività lavorativa o scolastica, come fossimo macchine, ma, in accordo con la definizione dell'OMS, <strong>uno stato di equilibrio e completo benessere, sia fisico che mentale</strong>. Assieme all'Associazione Mondiale di Haloterapia, di cui facciamo parte, diversi otorinolaringoiatri, pneumologi e dermatologi che condividono questo approccio, ambiamo a trasmettere una cultura della <strong>cura</strong> dell'apparato repiratorio e della cute, <strong>scientificamente comprovata</strong>, attenta al paziente, lenta (<strong>slow-health</strong>) e <strong>sostenibile</strong>. </p>
+                  </div>
                 </div>
                 <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
                   <i class="bi bi-eye-fill timeline-icon"></i>

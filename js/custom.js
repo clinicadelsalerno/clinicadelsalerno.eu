@@ -489,3 +489,43 @@ document.addEventListener('DOMContentLoaded', function () {
       showUnavailable();
     });
 });
+
+// ---- LA STORIA: accordion della timeline ----
+document.addEventListener('DOMContentLoaded', function () {
+  var toggles = document.querySelectorAll('.timeline-toggle');
+  if (!toggles.length) return;
+
+  function closeTimelineItem(button) {
+    var id = button.getAttribute('aria-controls');
+    var panel = id ? document.getElementById(id) : null;
+    button.setAttribute('aria-expanded', 'false');
+    if (panel) panel.hidden = true;
+
+    var content = button.closest('.timeline-content');
+    if (content) content.classList.remove('is-open');
+  }
+
+  function openTimelineItem(button) {
+    var id = button.getAttribute('aria-controls');
+    var panel = id ? document.getElementById(id) : null;
+    button.setAttribute('aria-expanded', 'true');
+    if (panel) panel.hidden = false;
+
+    var content = button.closest('.timeline-content');
+    if (content) content.classList.add('is-open');
+  }
+
+  toggles.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var shouldOpen = button.getAttribute('aria-expanded') !== 'true';
+
+      // Una sola tappa aperta alla volta: la sezione resta compatta.
+      toggles.forEach(function (otherButton) {
+        if (otherButton !== button) closeTimelineItem(otherButton);
+      });
+
+      if (shouldOpen) openTimelineItem(button);
+      else closeTimelineItem(button);
+    });
+  });
+});

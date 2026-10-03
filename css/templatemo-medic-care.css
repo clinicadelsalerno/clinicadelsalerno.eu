@@ -1380,3 +1380,130 @@ text-align: left;
   .google-live-reviews-carousel .owl-nav button.owl-prev { left: -10px; }
   .google-live-reviews-carousel .owl-nav button.owl-next { right: -10px; }
 }
+
+/* === LA NOSTRA STORIA: titoli apribili + link scientifici chiaramente cliccabili === */
+.timeline h3 {
+  padding: 0;
+  margin: 0; /* elimina la sottile fascia bianca sotto il titolo nero */
+}
+
+.timeline-content {
+  overflow: hidden; /* mantiene il rettangolo nero perfettamente aderente al box */
+}
+
+.timeline-toggle {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 24px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.18;
+  text-align: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.timeline-date time {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+
+.timeline-toggle:hover {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+
+.timeline-toggle:focus-visible {
+  outline: 3px solid #3DB5F9;
+  outline-offset: -3px;
+  color: #fff;
+}
+
+.timeline-chevron {
+  font-size: .75em;
+  line-height: 1;
+  transition: transform .22s ease;
+}
+
+.timeline-toggle[aria-expanded="true"] .timeline-chevron {
+  transform: rotate(180deg);
+}
+
+.timeline-content:not(.is-open) h3 {
+  border-radius: .25rem;
+}
+
+.timeline-details[hidden] {
+  display: none !important;
+}
+
+.timeline-details p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 16px;
+}
+
+/* Il link resta "RICERCHE CLINICHE", ma ora comunica chiaramente che è apribile */
+.timeline .timeline-research-link,
+.timeline .timeline-research-link:visited {
+  color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.timeline .timeline-research-link:hover,
+.timeline .timeline-research-link:focus {
+  color: #006eac;
+  text-decoration-thickness: 2px;
+}
+
+.research-link-icon {
+  display: inline-block;
+  margin-left: 3px;
+  font-size: .8em;
+  vertical-align: .08em;
+}
+
+/* Quando i testi sono chiusi, mantiene una distanza regolare tra tutte le tappe. */
+.timeline .timeline-nodes {
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+@media (max-width: 991px) {
+  .timeline-toggle {
+    font-size: 21px;
+    padding: 9px 20px;
+  }
+
+  .timeline-date time {
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-toggle {
+    font-size: 19px;
+    line-height: 1.2;
+    padding: 9px 18px;
+  }
+
+  .timeline-date time {
+    font-size: 1.12rem;
+  }
+
+  .timeline .timeline-nodes {
+    margin-bottom: 1rem !important;
+  }
+}
