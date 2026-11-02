@@ -153,6 +153,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var submitBtn = document.getElementById('submit-button');
   var endpoint = form.getAttribute('action');
+  var securityStatus = document.getElementById('contact-security-status');
+
+  function showSecurityStatus(message) {
+    if (securityStatus) securityStatus.textContent = message;
+  }
+
+  function resetContactTurnstile() {
+    if (window.turnstile && typeof window.turnstile.reset === 'function') {
+      try { window.turnstile.reset(); } catch (err) { console.warn('Reset Turnstile:', err); }
+    }
+  }
 
   function safeShowThankYouModal() {
     try {
@@ -171,12 +182,23 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    // Senza un token Turnstile valido dal browser non avviamo l'invio.
+    // Formspree fara' poi la verifica effettiva del token con la chiave segreta.
+    var tokenField = form.querySelector('[name="cf-turnstile-response"]');
+    var turnstileToken = tokenField ? tokenField.value.trim() : '';
+    if (!turnstileToken) {
+      showSecurityStatus('Completa la verifica di sicurezza prima di inviare. Se non compare, prova a ricaricare la pagina.');
+      return;
+    }
+    showSecurityStatus('');
+
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Invio...';
     }
 
     var formData = new FormData(form);
+    formData.set('cf-turnstile-response', turnstileToken);
 
     fetch(endpoint, {
       method: 'POST',
@@ -193,9 +215,12 @@ document.addEventListener('DOMContentLoaded', function () {
       form.reset();
       var chk = document.getElementById('privacyCheck');
       if (chk) chk.checked = false;
+      resetContactTurnstile();
     })
     .catch(function () {
-      // Mostra un messaggio minimale SOLO se la richiesta fallisce davvero
+      // Conserviamo il messaggio, ma azzeriamo il CAPTCHA per il tentativo successivo.
+      resetContactTurnstile();
+      showSecurityStatus('Invio non riuscito. Ripeti la verifica di sicurezza e riprova.');
       alert('Ops, qualcosa è andato storto. Puoi riprovare tra poco oppure chiamarci al 378 418 0878.');
     })
     .finally(function () {

@@ -571,6 +571,11 @@
           <h2 class="text-center mb-lg-3 mb-2">Scrivici</h2>
 
           <form id="contactForm" action="https://formspree.io/f/xpwjbvvg" method="POST">
+            <!-- Campo trappola invisibile: protezione anti-bot standard di Formspree. -->
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label for="contact-verification-field">Non compilare questo campo</label>
+              <input type="text" id="contact-verification-field" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
             <div class="row">
 
               <div class="col-lg-6 col-12">
@@ -641,6 +646,14 @@
                     e acconsento al trattamento dei dati per rispondere alla mia richiesta.
                   </label>
                 </div>
+              </div>
+
+              <!-- Verifica anti-bot Cloudflare Turnstile. La chiave qui sotto e' pubblica. -->
+              <div class="col-12 mt-3 d-flex justify-content-center">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAFw492vqvnBEL1p5" data-theme="auto"></div>
+              </div>
+              <div class="col-12">
+                <p id="contact-security-status" class="text-center small mb-0 mt-2" role="status" aria-live="polite" style="color:#9a3412;"></p>
               </div>
 
               <div class="col-lg-3 col-md-4 col-6 mx-auto">
@@ -962,7 +975,8 @@ style="text-decoration:underline;">link indicato</a>
       (function($){ if ($ && !$.fn.scrollspy) { $.fn.scrollspy = function(){ return this; }; } })(window.jQuery);
     </script>
 
-    <script src="js/custom.js"></script>
+    <script src="js/custom.js?v=antibot-20261102-fonti"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <script>
 (function(){
