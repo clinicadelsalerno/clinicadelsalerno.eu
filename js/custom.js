@@ -146,85 +146,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// ---- INVIO FORM "Scrivici" VIA AJAX (Formspree) + anti-bot ----
+// ---- INVIO FORM "Scrivici" VIA AJAX (Formspree) ----
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('contactForm');
   if (!form) return;
 
   var submitBtn = document.getElementById('submit-button');
   var endpoint = form.getAttribute('action');
-  var captchaBox = document.getElementById('contact-turnstile');
-  var statusBox = document.getElementById('contact-security-status');
-  // Questa e' solo la chiave PUBBLICA. La chiave SEGRETA va inserita su Formspree,
-  // MAI nei file pubblici del sito o nel repository GitHub.
-  var captchaKey = (form.getAttribute('data-turnstile-sitekey') || '').trim();
-  var captchaEnabled = !!captchaBox && !!captchaKey && captchaKey !== 'INSERISCI_LA_SITE_KEY_CLOUDFLARE';
-  var captchaToken = '';
-  var widgetId = null;
-  var captchaReady = false;
-
-  function showSecurityMessage(message) {
-    if (!statusBox) return;
-    statusBox.textContent = message;
-    statusBox.classList.remove('d-none');
-  }
-  function clearSecurityMessage() {
-    if (!statusBox) return;
-    statusBox.textContent = '';
-    statusBox.classList.add('d-none');
-  }
-  function resetCaptcha() {
-    if (!captchaEnabled) return;
-    captchaToken = '';
-    if (captchaReady && window.turnstile && widgetId !== null) {
-      try { window.turnstile.reset(widgetId); } catch (error) { console.warn('Reset Turnstile:', error); }
-    }
-  }
-
-  // Il CAPTCHA entra in funzione soltanto dopo aver inserito la Site Key.
-  // Fino a quel momento resta comunque attivo l'honeypot _gotcha di Formspree.
-  if (captchaEnabled) {
-    captchaBox.classList.remove('d-none');
-    captchaBox.classList.add('cds-antibot-active');
-    showSecurityMessage('Caricamento della verifica di sicurezza...');
-    var captchaScript = document.createElement('script');
-    captchaScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-    captchaScript.async = true;
-    captchaScript.defer = true;
-    captchaScript.onload = function () {
-      if (!window.turnstile) {
-        showSecurityMessage('Verifica di sicurezza non disponibile. Aggiorna la pagina e riprova.');
-        return;
-      }
-      try {
-        widgetId = window.turnstile.render(captchaBox, {
-          sitekey: captchaKey,
-          theme: 'auto',
-          callback: function (token) {
-            captchaToken = token;
-            clearSecurityMessage();
-          },
-          'expired-callback': function () {
-            captchaToken = '';
-            showSecurityMessage("La verifica è scaduta: ripetila prima di inviare il messaggio.");
-          },
-          'error-callback': function () {
-            captchaToken = '';
-            showSecurityMessage('Verifica di sicurezza non riuscita. Riprova.');
-          }
-        });
-        captchaReady = true;
-        clearSecurityMessage();
-      } catch (error) {
-        console.warn('Impossibile inizializzare Turnstile:', error);
-        showSecurityMessage('Verifica di sicurezza non disponibile. Aggiorna la pagina e riprova.');
-      }
-    };
-    captchaScript.onerror = function () {
-      showSecurityMessage('Verifica di sicurezza non caricata. Controlla la connessione e riprova.');
-    };
-    document.head.appendChild(captchaScript);
-  }
 
   function safeShowThankYouModal() {
     try {
@@ -234,31 +162,21 @@ document.addEventListener('DOMContentLoaded', function () {
       // Compat: Bootstrap 5.0.x non ha getOrCreateInstance
       var modalInstance = (bootstrap.Modal.getInstance && bootstrap.Modal.getInstance(tyEl)) || new bootstrap.Modal(tyEl);
       modalInstance.show();
-    } catch (error) {
-      console.warn('Impossibile aprire il modal di ringraziamento:', error);
+    } catch (e) {
+      // Non mandare l'utente nel catch principale: fall-back silenzioso
+      console.warn('Impossibile aprire il modal di ringraziamento:', e);
     }
   }
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    // Non consente invii privi di verifica quando Turnstile e' stato configurato.
-    // La verifica definitiva del token e' effettuata dai server Formspree.
-    if (captchaEnabled && (!captchaReady || !captchaToken)) {
-      showSecurityMessage(captchaReady
-        ? 'Completa la verifica di sicurezza prima di inviare il messaggio.'
-        : 'Attendi il caricamento della verifica di sicurezza o aggiorna la pagina.');
-      return;
-    }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Invio...';
     }
-    clearSecurityMessage();
 
     var formData = new FormData(form);
-    if (captchaEnabled) formData.set('cf-turnstile-response', captchaToken);
 
     fetch(endpoint, {
       method: 'POST',
@@ -266,21 +184,19 @@ document.addEventListener('DOMContentLoaded', function () {
       body: formData
     })
     .then(function (res) {
-      if (!res.ok) throw new Error('Errore di invio: HTTP ' + res.status);
+      // Formspree risponde 200/OK su successo
+      if (!res.ok) throw new Error('Errore di invio');
+      // Prova ad aprire il modal (compat con BS 5.0.x)
       safeShowThankYouModal();
+
+      // Reset form e privacy
       form.reset();
       var chk = document.getElementById('privacyCheck');
       if (chk) chk.checked = false;
-      resetCaptcha();
     })
-    .catch(function (error) {
-      console.warn('Invio modulo non riuscito:', error);
-      if (captchaEnabled) {
-        resetCaptcha();
-        showSecurityMessage('Messaggio non inviato. Ripeti la verifica di sicurezza e riprova; i campi compilati sono stati conservati.');
-      } else {
-        alert("Ops, qualcosa è andato storto. Puoi riprovare tra poco oppure chiamarci al 378 418 0878.");
-      }
+    .catch(function () {
+      // Mostra un messaggio minimale SOLO se la richiesta fallisce davvero
+      alert('Ops, qualcosa è andato storto. Puoi riprovare tra poco oppure chiamarci al 378 418 0878.');
     })
     .finally(function () {
       if (submitBtn) {
@@ -572,4 +488,44 @@ document.addEventListener('DOMContentLoaded', function () {
       console.warn('Impossibile caricare le recensioni Google:', error);
       showUnavailable();
     });
+});
+
+// ---- LA STORIA: accordion della timeline ----
+document.addEventListener('DOMContentLoaded', function () {
+  var toggles = document.querySelectorAll('.timeline-toggle');
+  if (!toggles.length) return;
+
+  function closeTimelineItem(button) {
+    var id = button.getAttribute('aria-controls');
+    var panel = id ? document.getElementById(id) : null;
+    button.setAttribute('aria-expanded', 'false');
+    if (panel) panel.hidden = true;
+
+    var content = button.closest('.timeline-content');
+    if (content) content.classList.remove('is-open');
+  }
+
+  function openTimelineItem(button) {
+    var id = button.getAttribute('aria-controls');
+    var panel = id ? document.getElementById(id) : null;
+    button.setAttribute('aria-expanded', 'true');
+    if (panel) panel.hidden = false;
+
+    var content = button.closest('.timeline-content');
+    if (content) content.classList.add('is-open');
+  }
+
+  toggles.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var shouldOpen = button.getAttribute('aria-expanded') !== 'true';
+
+      // Una sola tappa aperta alla volta: la sezione resta compatta.
+      toggles.forEach(function (otherButton) {
+        if (otherButton !== button) closeTimelineItem(otherButton);
+      });
+
+      if (shouldOpen) openTimelineItem(button);
+      else closeTimelineItem(button);
+    });
+  });
 });
