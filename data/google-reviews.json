@@ -2,9 +2,18 @@
   "businessName": "Clinica del Salerno",
   "provider": "Google",
   "rating": 5.0,
-  "totalReviews": 19,
+  "totalReviews": 20,
   "reviewUrl": "https://g.page/r/CbtSshYPfTiIEAE/review",
   "reviews": [
+    {
+      "reviewId": "AbFvOqn4CkDxrPgEft9OOXTPLqoNeifIw-vJjpc36fKQlsB_kcrd3LyVY1rP8iKIK5Y4_JKtULQ8WA",
+      "reviewer": {
+        "displayName": "Maria napoli",
+        "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjXPBayWZb5ScHIVcRqCo6oKxoh1cMv1PVIiEulvq54rPQNpXVo=s120-c-rp-mo-br100"
+      },
+      "starRating": "FIVE",
+      "comment": "Sono molto soddisfatta dei risultati ottenuti per mio figlio, è riuscito ad espellere i muchi, è già il secondo anno che frequenta la clinica e ci torneremo sicuramente anche il prossimo.\nAmbiente pulito e personale cordiale"
+    },
     {
       "reviewId": "AbFvOqlpldu1en-E85_9waxbs2n5Str_VEUtd3ayDdT5CSY0Jf9DNCttJvm688HqpprrqtkIEdt_EQ",
       "reviewer": {
@@ -87,7 +96,7 @@
       "comment": "Consiglio la Haloteraia a tutti! Mio figlio soffre di muco timpano cristallizzato da anni. Il suo udito ormai stava scomparendo,creandogli gravi disagi nella vita quotidiana. Abbiamo sperimentato  ,prima di un ipotetico intervento chirurgico ;la terapia farmacologica sotto controllo medico.\nAntibiotici, cortisone, spray ,sciroppi e nebulizzazioni varie, sono state nulle e valide solo per brevi periodi.La \"stanza del sale \" è' stata per noi una super scoperta!!!\nFin dalle prime sedute ,Andrea migliorava con il respiro, sopratutto notturno! (Lui che dormiva solo con la bocca aperta e andava spesso in apnea. I primi segnali che riusciva a sentire anche i suoni più bassi tipo da una stanza ad un'altra; ci hanno dato una gioia immensa!!!\nRosa e Andrea sono ragazzi speciali!\nSuper professionali!\nSimpatici generosi ed attenti ad ogni esigenza!\nHo conosciuto inizialmente Rosa a telefono; già dalla prima chiamata me ne sono affezionata ; per i suoi modi super gentili ,a modo e di una simpatia che al giorno d'oggi è difficile trovare!\nIl nostro primo ciclo è terminato, ma a breve ne cominceremo subito un altro di mantenimento... Considerando tutti i benefici per l'interessato e per l'accompagnatore familiare che ne trae solo vantaggi!\nGrazie Haloterapia clinica del Salerno!\nUn grazie speciale ai nostri cari Rosa e Andrea🙏❤️",
       "reviewMediaItems": [
         {
-          "thumbnailUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLfIgqF8IdLyU1tQ4tmxZ_m3GwsMs25P6YUdnjNj9HwtRJ2boZwwTtirHwhOi2N9gyd28NmdmupYE502qDtvpiNgpOYyK6Ajq50G8fobsSJJtsTFPX93Lhj6PhlyM4LF8eiLod-f8wo7wdEt=k-no"
+          "thumbnailUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLeSiOHq4OOQbV4LCStwemY7uBu-MWjCvOwHwr12MD4iE9bXlMBSrVjPG64YuhmFffBM88UCr8Tquj7CV-ZrKmLVLiNY9AJwZjLdMGW7_hR-QlrJv4oIcu6A3kGonVY9-jN26wyL_mIGK2RA=k-no"
         }
       ]
     },
@@ -116,7 +125,7 @@
           "thumbnailUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLf99Ahlw7qgSKG8Fz5-b6y2Fz0Cr6N2SnsEH_Nn2RbuUFg3IoAcNn9yMfPXagokhlw3KZQ2vjadGSe9gxCsXanPxfs-uLmLOJAMc8qsxxrjPm5AL4l9rhcLhAdljLzOC_ajR2sQRGJcyns=k-no"
         },
         {
-          "thumbnailUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLe-oBivSy2QBvi7GUbCKzqIJu3zssMmWPMxrO-Tz2H_50IPO8ZVQHQmqMyhVU7l43mWKpVF4nCu_TarZjUkXDG6nNX7dr1Yn3rv0IxqjMo4yBqP32Fpab9M3bvonTZe2PaGDTy1ucX-n8IY=k-no"
+          "thumbnailUrl": "https://lh3.googleusercontent.com/grass-cs/AABkmLe4mrF_fcux1YrDw1ApE7fQwGUmHkATI27r9ZdymrBX2FcLvJQo7jvENUE0fIh0C8wvG2p_qqZAGbu5VquFmNHHGdsz064pSXtxADjHhFCLcwP6MdSk3XN7r4NtBI0arY6VpIkPVPwoUoPq=k-no"
         }
       ]
     },
